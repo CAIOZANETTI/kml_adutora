@@ -118,11 +118,10 @@ def render_tracado() -> None:
     metric_cols[2].metric("Pontos interpolados", f"{preview['interpolated_points']}")
     metric_cols[3].metric("Faixa altimetrica", f"{preview['min_elevation_m']:.1f} a {preview['max_elevation_m']:.1f} m")
 
-    c1, c2 = st.columns([1.1, 1.0])
-    with c1:
-        st.plotly_chart(preview_plan_figure(preview["base_df"]), use_container_width=True)
-    with c2:
-        st.plotly_chart(preview_profile_figure(preview["base_df"]), use_container_width=True)
+    st.markdown("#### Vista em planta")
+    st.plotly_chart(preview_plan_figure(preview["base_df"]), use_container_width=True)
+    st.markdown("#### Preview do perfil")
+    st.plotly_chart(preview_profile_figure(preview["base_df"]), use_container_width=True)
 
     with st.expander("Log tecnico", expanded=False):
         st.write(f"Numero de vertices lidos: {preview['raw_vertices']}")
@@ -223,24 +222,22 @@ def render_regime_permanente() -> None:
         st.info("O resultado do diagnostico ainda nao esta disponivel.")
         return
 
-    c1, c2 = st.columns([1.15, 1.0])
-    with c1:
-        st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
-    with c2:
-        st.dataframe(
-            result["detail_df"][[
-                "dist_acum_m",
-                "material",
-                "dn_mm",
-                "velocity_m_s",
-                "head_loss_segment_m",
-                "head_loss_cumulative_m",
-                "pressure_bar",
-            ]],
-            use_container_width=True,
-            hide_index=True,
-            height=360,
-        )
+    st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
+    st.markdown("#### Tabela por trecho")
+    st.dataframe(
+        result["detail_df"][[
+            "dist_acum_m",
+            "material",
+            "dn_mm",
+            "velocity_m_s",
+            "head_loss_segment_m",
+            "head_loss_cumulative_m",
+            "pressure_bar",
+        ]],
+        use_container_width=True,
+        hide_index=True,
+        height=360,
+    )
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
@@ -288,11 +285,9 @@ def render_transientes() -> None:
         st.info("Rode ao menos o diagnostico para visualizar transientes.")
         return
 
-    c1, c2 = st.columns([1.15, 1.0])
-    with c1:
-        st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
-    with c2:
-        st.dataframe(result["devices_df"], use_container_width=True, hide_index=True, height=360)
+    st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
+    st.markdown("#### Dispositivos sugeridos")
+    st.dataframe(result["devices_df"], use_container_width=True, hide_index=True, height=360)
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
@@ -361,13 +356,10 @@ def render_cenarios() -> None:
     zoned_ranked = rank_scenarios_for_display(result["zoned_df"], priority)
 
     st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
-    c1, c2 = st.columns(2)
-    with c1:
-        st.markdown("#### Uniforme")
-        st.dataframe(uniform_ranked.head(10), use_container_width=True, hide_index=True)
-    with c2:
-        st.markdown("#### Por trechos")
-        st.dataframe(zoned_ranked.head(10), use_container_width=True, hide_index=True)
+    st.markdown("#### Uniforme")
+    st.dataframe(uniform_ranked.head(10), use_container_width=True, hide_index=True)
+    st.markdown("#### Por trechos")
+    st.dataframe(zoned_ranked.head(10), use_container_width=True, hide_index=True)
 
     with st.expander("Log tecnico", expanded=False):
         uniform_df = result["uniform_df"]
