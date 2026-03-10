@@ -40,6 +40,19 @@ Regra central do projeto:
 - indica materiais, classes, dispositivos e pontos criticos
 - exporta perfil, alternativas, zonas e listas preliminares
 
+## Interface em pages
+
+A interface Streamlit foi reorganizada como fluxo tecnico guiado por etapas:
+
+1. `Tracado`
+2. `Diagnostico`
+3. `Regime permanente`
+4. `Transientes e protecao`
+5. `Cenarios de tubulacao`
+6. `Solucao final`
+
+Cada etapa usa `st.form`, persiste dados em `st.session_state`, libera a proxima page apenas quando a anterior foi concluida e mostra o log tecnico em `expander` fechado por padrao. Existe ainda uma page auxiliar `Catalogo JSON` para rastreabilidade dos documentos e download dos arquivos-base do app web.
+
 ## Catalogo atual
 
 O catalogo em `src/assets/pipe_catalog.json` usa linhas rastreaveis para:
@@ -58,6 +71,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app/streamlit_app.py
 ```
+
+Para deploy no Streamlit Community Cloud, use:
+
+- Repository: `CAIOZANETTI/kml_adutora`
+- Branch: `main`
+- Main file path: `app/streamlit_app.py`
 
 ## Testes
 
