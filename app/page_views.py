@@ -534,42 +534,41 @@ def render_solucao_final() -> None:
     with tab_mat:
         st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
 
-    st.markdown("---")
-    st.markdown("#### Orcamento estimado (WBS)")
-    st.caption(
-        "Quantidades pre-carregadas do dimensionamento. Edite os precos unitarios (Unit) e adicione ou remova linhas. "
-        "Parcial = Qtd × Unit (atualizado a cada interacao)."
-    )
+    with st.expander("Orcamento estimado (WBS)", expanded=False):
+        st.caption(
+            "Quantidades pre-carregadas do dimensionamento. Edite os precos unitarios (Unit) e adicione ou remova linhas. "
+            "Parcial = Qtd x Unit (atualizado a cada interacao)."
+        )
 
-    wbs_align = result["alignment_id"]
-    if st.session_state.get("_wbs_alignment") != wbs_align:
-        st.session_state["_wbs_df"] = _build_wbs_df(result)
-        st.session_state["_wbs_alignment"] = wbs_align
+        wbs_align = result["alignment_id"]
+        if st.session_state.get("_wbs_alignment") != wbs_align:
+            st.session_state["_wbs_df"] = _build_wbs_df(result)
+            st.session_state["_wbs_alignment"] = wbs_align
 
-    wbs = st.session_state["_wbs_df"].copy()
-    wbs["Parcial (R$)"] = (wbs["Qtd"].fillna(0) * wbs["Unit (R$)"].fillna(0)).round(2)
+        wbs = st.session_state["_wbs_df"].copy()
+        wbs["Parcial (R$)"] = (wbs["Qtd"].fillna(0) * wbs["Unit (R$)"].fillna(0)).round(2)
 
-    edited_wbs = st.data_editor(
-        wbs,
-        num_rows="dynamic",
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "Descricao": st.column_config.TextColumn("Descricao", width="large"),
-            "Qtd": st.column_config.NumberColumn("Qtd", format="%.2f", min_value=0.0),
-            "Unid": st.column_config.TextColumn("Unid", width="small"),
-            "Unit (R$)": st.column_config.NumberColumn("Unit (R$)", format="R$ %.2f", min_value=0.0),
-            "Parcial (R$)": st.column_config.NumberColumn("Parcial (R$)", format="R$ %.2f", disabled=True),
-        },
-    )
+        edited_wbs = st.data_editor(
+            wbs,
+            num_rows="dynamic",
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Descricao": st.column_config.TextColumn("Descricao", width="large"),
+                "Qtd": st.column_config.NumberColumn("Qtd", format="%.2f", min_value=0.0),
+                "Unid": st.column_config.TextColumn("Unid", width="small"),
+                "Unit (R$)": st.column_config.NumberColumn("Unit (R$)", format="R$ %.2f", min_value=0.0),
+                "Parcial (R$)": st.column_config.NumberColumn("Parcial (R$)", format="R$ %.2f", disabled=True),
+            },
+        )
 
-    if edited_wbs is not None:
-        edited_wbs["Parcial (R$)"] = (edited_wbs["Qtd"].fillna(0) * edited_wbs["Unit (R$)"].fillna(0)).round(2)
-        st.session_state["_wbs_df"] = edited_wbs
+        if edited_wbs is not None:
+            edited_wbs["Parcial (R$)"] = (edited_wbs["Qtd"].fillna(0) * edited_wbs["Unit (R$)"].fillna(0)).round(2)
+            st.session_state["_wbs_df"] = edited_wbs
 
-    total_wbs = (edited_wbs if edited_wbs is not None else wbs)["Parcial (R$)"].sum()
-    _, col_total = st.columns([3, 1])
-    col_total.metric("Total estimado", f"R$ {total_wbs:,.2f}")
+        total_wbs = (edited_wbs if edited_wbs is not None else wbs)["Parcial (R$)"].sum()
+        _, col_total = st.columns([3, 1])
+        col_total.metric("Total estimado", f"R$ {total_wbs:,.2f}")
 
     with st.expander("Log tecnico", expanded=False):
         st.write(f"Cenario selecionado: {best['zone_signature']}")
