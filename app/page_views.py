@@ -26,6 +26,49 @@ from ui_shared import (
 )
 
 
+def _build_wbs_df(result: dict) -> pd.DataFrame:
+    """Constrói dataframe WBS inicial a partir dos resultados da análise."""
+    rows: list[dict] = []
+
+    zone_df = result.get("zone_solution_df", pd.DataFrame())
+    if not zone_df.empty and "cost_brl_per_m" in zone_df.columns:
+        grp = (
+            zone_df.groupby(
+                ["material", "product_line", "dn_mm", "pressure_class_bar"], as_index=False
+            )
+            .agg(length_m=("length_m", "sum"), cost_brl_per_m=("cost_brl_per_m", "mean"))
+            .sort_values(["material", "dn_mm"])
+        )
+        for _, row in grp.iterrows():
+            qtd = round(float(row["length_m"]), 0)
+            unit = round(float(row["cost_brl_per_m"]), 2)
+            rows.append({
+                "Descricao": f"{row['material']} DN {int(row['dn_mm'])} {row['product_line']} PN{int(row['pressure_class_bar'])}",
+                "Qtd": qtd,
+                "Unid": "m",
+                "Unit (R$)": unit,
+                "Parcial (R$)": round(qtd * unit, 2),
+            })
+
+    devices_df = result.get("devices_df", pd.DataFrame())
+    if not devices_df.empty and "type" in devices_df.columns:
+        for dev_type, count in devices_df["type"].value_counts().items():
+            rows.append({
+                "Descricao": str(dev_type),
+                "Qtd": float(count),
+                "Unid": "un",
+                "Unit (R$)": 0.0,
+                "Parcial (R$)": 0.0,
+            })
+
+    total_m = float(result.get("kpis", {}).get("total_length_m", 0))
+    rows.append({"Descricao": "Montagem e soldagem", "Qtd": total_m, "Unid": "m", "Unit (R$)": 0.0, "Parcial (R$)": 0.0})
+    rows.append({"Descricao": "Mobilizacao e desmobilizacao", "Qtd": 1.0, "Unid": "vb", "Unit (R$)": 0.0, "Parcial (R$)": 0.0})
+    rows.append({"Descricao": "Servicos de escavacao e reaterro", "Qtd": total_m, "Unid": "m", "Unit (R$)": 0.0, "Parcial (R$)": 0.0})
+
+    return pd.DataFrame(rows)
+
+
 def _with_status(df: pd.DataFrame) -> pd.DataFrame:
     """Adiciona coluna 'status' legivel indicando o motivo de inviabilidade."""
     max_op = float(st.session_state.diagnostic_inputs.get("max_operating_pressure_bar", 9999))
@@ -490,6 +533,43 @@ def render_solucao_final() -> None:
         st.dataframe(result["critical_points_df"], use_container_width=True, hide_index=True)
     with tab_mat:
         st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
+
+    st.markdown("---")
+    st.markdown("#### Orcamento estimado (WBS)")
+    st.caption(
+        "Quantidades pre-carregadas do dimensionamento. Edite os precos unitarios (Unit) e adicione ou remova linhas. "
+        "Parcial = Qtd × Unit (atualizado a cada interacao)."
+    )
+
+    wbs_align = result["alignment_id"]
+    if st.session_state.get("_wbs_alignment") != wbs_align:
+        st.session_state["_wbs_df"] = _build_wbs_df(result)
+        st.session_state["_wbs_alignment"] = wbs_align
+
+    wbs = st.session_state["_wbs_df"].copy()
+    wbs["Parcial (R$)"] = (wbs["Qtd"].fillna(0) * wbs["Unit (R$)"].fillna(0)).round(2)
+
+    edited_wbs = st.data_editor(
+        wbs,
+        num_rows="dynamic",
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Descricao": st.column_config.TextColumn("Descricao", width="large"),
+            "Qtd": st.column_config.NumberColumn("Qtd", format="%.2f", min_value=0.0),
+            "Unid": st.column_config.TextColumn("Unid", width="small"),
+            "Unit (R$)": st.column_config.NumberColumn("Unit (R$)", format="R$ %.2f", min_value=0.0),
+            "Parcial (R$)": st.column_config.NumberColumn("Parcial (R$)", format="R$ %.2f", disabled=True),
+        },
+    )
+
+    if edited_wbs is not None:
+        edited_wbs["Parcial (R$)"] = (edited_wbs["Qtd"].fillna(0) * edited_wbs["Unit (R$)"].fillna(0)).round(2)
+        st.session_state["_wbs_df"] = edited_wbs
+
+    total_wbs = (edited_wbs if edited_wbs is not None else wbs)["Parcial (R$)"].sum()
+    _, col_total = st.columns([3, 1])
+    col_total.metric("Total estimado", f"R$ {total_wbs:,.2f}")
 
     with st.expander("Log tecnico", expanded=False):
         st.write(f"Cenario selecionado: {best['zone_signature']}")

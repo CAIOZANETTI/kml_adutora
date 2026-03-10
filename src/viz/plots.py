@@ -75,35 +75,107 @@ def fig_pressure(detail_df: pd.DataFrame) -> go.Figure:
 
 
 def fig_alternatives(uniform_df: pd.DataFrame, zoned_df: pd.DataFrame) -> go.Figure:
-    uniform_plot = uniform_df.copy().head(20)
+    uniform_plot = uniform_df.copy()
     uniform_plot["kind"] = "Uniforme"
-    zoned_plot = zoned_df.copy().head(20)
+    zoned_plot = zoned_df.copy()
     zoned_plot["kind"] = "Por trechos"
     plot_df = pd.concat([uniform_plot, zoned_plot], ignore_index=True, sort=False)
-    plot_df["status"] = plot_df["is_feasible"].map({True: "Atende", False: "Nao atende"})
-    fig = px.scatter(
-        plot_df,
-        x="pump_head_required_m",
-        y="objective_cost_brl",
-        color="status",
-        symbol="kind",
-        hover_name="kind",
-        hover_data={"velocity_m_s": True, "min_transient_bar": True, "max_transient_bar": True},
-        color_discrete_map={"Atende": _THEME["ok"], "Nao atende": _THEME["surge"]},
+
+    feasible = plot_df[plot_df["is_feasible"]]
+    infeasible = plot_df[~plot_df["is_feasible"]]
+
+    fig = go.Figure()
+
+    # Reprovados como fundo suave
+    for kind, symbol in [("Uniforme", "circle"), ("Por trechos", "diamond")]:
+        grp = infeasible[infeasible["kind"] == kind]
+        if grp.empty:
+            continue
+        fig.add_trace(go.Scatter(
+            x=grp["pump_head_required_m"],
+            y=grp["objective_cost_brl"],
+            mode="markers",
+            name=f"Reprovado — {kind}",
+            marker=dict(color=_THEME["surge"], symbol=symbol, size=6, opacity=0.2),
+            hovertemplate=f"<b>Reprovado — {kind}</b><br>Bomb.: %{{x:.1f}} m<br>Custo: R$ %{{y:,.0f}}<extra></extra>",
+        ))
+
+    # Viaveis em destaque
+    _color_ok = {"Uniforme": _THEME["ok"], "Por trechos": "#1e8449"}
+    for kind, symbol in [("Uniforme", "circle"), ("Por trechos", "diamond")]:
+        grp = feasible[feasible["kind"] == kind]
+        if grp.empty:
+            continue
+        has_vel = "velocity_m_s" in grp.columns
+        has_label = "scenario_label" in grp.columns
+        customdata = grp[["velocity_m_s"]].values if has_vel else None
+        label_extra = "Vel.: %{customdata[0]:.2f} m/s<br>" if has_vel else ""
+        fig.add_trace(go.Scatter(
+            x=grp["pump_head_required_m"],
+            y=grp["objective_cost_brl"],
+            mode="markers",
+            name=f"Viavel — {kind}",
+            marker=dict(
+                color=_color_ok[kind],
+                symbol=symbol,
+                size=11,
+                opacity=0.9,
+                line=dict(color="white", width=1),
+            ),
+            customdata=customdata,
+            text=grp["scenario_label"].fillna("") if has_label else None,
+            hovertemplate=(
+                f"<b>Viavel — {kind}</b><br>"
+                "%{text}<br>"
+                "Bomb.: %{x:.1f} m<br>"
+                "Custo: R$ %{y:,.0f}<br>"
+                + label_extra
+                + "<extra></extra>"
+            ),
+        ))
+
+    fig.update_layout(
+        template="plotly_white",
+        height=440,
+        xaxis_title="Bombeamento requerido (m)",
+        yaxis_title="Custo proxy (R$)",
+        yaxis_tickformat=",.2s",
+        legend=dict(orientation="v", x=1.01, y=1, xanchor="left"),
+        margin=dict(r=10, t=20),
+        hovermode="closest",
     )
-    fig.update_layout(template="plotly_white", height=380, xaxis_title="Bombeamento requerido (m)", yaxis_title="Custo tecnico-economico proxy (R$)")
     return fig
 
 
 def fig_catalog(catalog_df: pd.DataFrame) -> go.Figure:
+    hover_name = "product_id" if "product_id" in catalog_df.columns else catalog_df.columns[0]
     fig = px.scatter(
         catalog_df,
         x="inner_diameter_m",
         y="cost_brl_per_m",
         color="material",
         symbol="pressure_class_bar",
-        hover_name="scenario_label",
-        size="pressure_class_bar",
+        hover_name=hover_name,
+        hover_data={
+            "material": True,
+            "pressure_class_bar": True,
+            "inner_diameter_m": ":.3f",
+            "cost_brl_per_m": True,
+        },
+        labels={
+            "pressure_class_bar": "PN (bar)",
+            "material": "Material",
+            "inner_diameter_m": "Diam. int. (m)",
+            "cost_brl_per_m": "R$/m",
+        },
     )
-    fig.update_layout(template="plotly_white", height=380, xaxis_title="Diametro interno (m)", yaxis_title="Custo base (R$/m)")
+    fig.update_traces(marker=dict(size=9, opacity=0.85))
+    fig.update_layout(
+        template="plotly_white",
+        height=440,
+        xaxis_title="Diametro interno (m)",
+        yaxis_title="Custo base (R$/m)",
+        legend_title="Material / PN",
+        hovermode="closest",
+    )
     return fig
