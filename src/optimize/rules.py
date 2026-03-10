@@ -185,6 +185,20 @@ def recommend_devices(detail_df: pd.DataFrame, raw_points: List[Dict], params: D
             "reason": "Envelope transitorio indica subpressao relevante.",
         })
 
+    static_vacuum_mask = detail_df["pressure_bar"] < 0.0
+    if static_vacuum_mask.any():
+        critical = detail_df.loc[detail_df["pressure_bar"].idxmin()]
+        records.append({
+            "type": "Subpressao estatica / vacuo",
+            "station_m": round(float(critical["dist_acum_m"]), 2),
+            "lat": critical["lat"],
+            "lon": critical["lon"],
+            "reason": (
+                f"Pressao estatica negativa ({critical['pressure_bar']:.2f} bar) em regime permanente. "
+                "Revisar carga de montante, acrescentar bombeamento ou instalar ventosa anti-vacuo."
+            ),
+        })
+
     if float(detail_df["pressure_max_transient_bar"].max()) > float(detail_df["pressure_class_bar"].max()):
         critical = detail_df.loc[detail_df["pressure_max_transient_bar"].idxmax()]
         records.append({

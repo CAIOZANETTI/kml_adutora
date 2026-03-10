@@ -28,6 +28,8 @@ from ui_shared import (
 def _with_status(df: pd.DataFrame) -> pd.DataFrame:
     """Adiciona coluna 'status' legivel indicando o motivo de inviabilidade."""
     def _label(row):
+        if row.get("static_vacuum_risk", False):
+            return "Vacuo estatico"
         if not row.get("pressure_class_ok", True):
             return "Pressao excede PN"
         if not row.get("velocity_ok", True):

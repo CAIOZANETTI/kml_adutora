@@ -44,6 +44,7 @@ def _scenario_summary(
         axis=1,
     )
     subpressure_risk = np.min(transient["pressure_min_bar"], axis=1) < float(params["minimum_transient_pressure_bar"])
+    static_vacuum_risk = np.any(hydraulic["pressure_points_bar"] < 0.0, axis=1)
     pump_mask = hydraulic["pump_head_required_m"] > 0.01
 
     energy_cost_brl = _energy_cost_brl(params["flow_m3_s"], hydraulic["pump_head_required_m"], params)
@@ -68,10 +69,11 @@ def _scenario_summary(
     summary["velocity_ok"] = velocity_ok
     summary["pressure_class_ok"] = class_ok
     summary["subpressure_risk"] = subpressure_risk
-    summary["is_feasible"] = velocity_ok & class_ok
+    summary["static_vacuum_risk"] = static_vacuum_risk
+    summary["is_feasible"] = velocity_ok & class_ok & ~static_vacuum_risk
     return summary.sort_values(
-        by=["is_feasible", "subpressure_risk", "objective_cost_brl"],
-        ascending=[False, True, True],
+        by=["is_feasible", "subpressure_risk", "static_vacuum_risk", "objective_cost_brl"],
+        ascending=[False, True, True, True],
     ).reset_index(drop=True)
 
 
