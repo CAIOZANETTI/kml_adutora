@@ -25,6 +25,23 @@ from ui_shared import (
 )
 
 
+def _with_status(df: pd.DataFrame) -> pd.DataFrame:
+    """Adiciona coluna 'status' legivel indicando o motivo de inviabilidade."""
+    def _label(row):
+        if row.get("static_vacuum_risk", False):
+            return "Vacuo estatico"
+        if not row.get("pressure_class_ok", True):
+            return "Pressao excede PN"
+        if not row.get("velocity_ok", True):
+            return "Velocidade fora"
+        if row.get("subpressure_risk", False):
+            return "Risco subpressao"
+        return "Viavel"
+    out = df.copy()
+    out.insert(0, "status", out.apply(_label, axis=1))
+    return out
+
+
 def render_tracado() -> None:
     render_page_header(
         "Tracado",
@@ -356,10 +373,32 @@ def render_cenarios() -> None:
     zoned_ranked = rank_scenarios_for_display(result["zoned_df"], priority)
 
     st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
+
+    display_cols = [
+        "status",
+        "scenario_label",
+        "dn_mm",
+        "pressure_class_bar",
+        "max_pressure_bar",
+        "max_transient_bar",
+        "velocity_m_s",
+        "pump_head_required_m",
+        "objective_cost_brl",
+        "score_global",
+    ]
+
     st.markdown("#### Uniforme")
-    st.dataframe(uniform_ranked.head(10), use_container_width=True, hide_index=True)
+    st.dataframe(
+        _with_status(uniform_ranked).head(10)[[c for c in display_cols if c in _with_status(uniform_ranked).columns]],
+        use_container_width=True,
+        hide_index=True,
+    )
     st.markdown("#### Por trechos")
-    st.dataframe(zoned_ranked.head(10), use_container_width=True, hide_index=True)
+    st.dataframe(
+        _with_status(zoned_ranked).head(10)[[c for c in display_cols if c in _with_status(zoned_ranked).columns]],
+        use_container_width=True,
+        hide_index=True,
+    )
 
     with st.expander("Log tecnico", expanded=False):
         uniform_df = result["uniform_df"]
