@@ -39,17 +39,22 @@ PAGES = [
     ("Transientes e protecao", "transientes-protecao", _wrap("Transientes e protecao", render_transientes)),
     ("Cenarios de tubulacao", "cenarios-tubulacao", _wrap("Cenarios de tubulacao", render_cenarios)),
     ("Solucao final", "solucao-final", _wrap("Solucao final", render_solucao_final)),
-    ("Catalogo JSON", "catalogo-json", _wrap("Catalogo JSON", render_catalogo)),
+]
+
+REFERENCE_PAGES = [
+    ("Catalogo e referencias", "catalogo-json", _wrap("Catalogo e referencias", render_catalogo)),
 ]
 
 if hasattr(st, "Page") and hasattr(st, "navigation"):
-    pages = [st.Page(render_fn, title=title, url_path=url_path) for title, url_path, render_fn in PAGES]
+    all_pages = [st.Page(render_fn, title=title, url_path=url_path) for title, url_path, render_fn in PAGES]
+    all_pages += [st.Page(render_fn, title=title, url_path=url_path) for title, url_path, render_fn in REFERENCE_PAGES]
     try:
-        navigator = st.navigation(pages, position="sidebar")
+        navigator = st.navigation(all_pages, position="sidebar")
     except TypeError:
-        navigator = st.navigation(pages)
+        navigator = st.navigation(all_pages)
     navigator.run()
 else:
-    selected = st.sidebar.radio("Etapas", [title for title, _, _ in PAGES], index=0)
-    page_map = {title: render_fn for title, _, render_fn in PAGES}
+    all_nav = PAGES + REFERENCE_PAGES
+    selected = st.sidebar.radio("Etapas", [title for title, _, _ in all_nav], index=0)
+    page_map = {title: render_fn for title, _, render_fn in all_nav}
     page_map[selected]()

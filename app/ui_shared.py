@@ -344,6 +344,12 @@ def render_sidebar(stage_name: str) -> None:
             reset_case()
             st.rerun()
 
+        st.markdown("---")
+        catalog_df = load_pipe_catalog()
+        dn_max = int(catalog_df["dn_mm"].max())
+        n_items = len(catalog_df)
+        st.caption(f"Catalogo: {n_items} tubos | DN max {dn_max} mm")
+
 
 def preview_profile_figure(base_df: pd.DataFrame) -> go.Figure:
     fig = go.Figure()
