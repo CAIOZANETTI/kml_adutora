@@ -12,7 +12,13 @@ import streamlit as st
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from src import analyze_alignment, load_pipe_catalog, load_reference_library
+from src import (
+    analyze_alignment,
+    load_pipe_catalog,
+    load_pipe_catalog_payload,
+    load_reference_library,
+    load_reference_library_payload,
+)
 from src.export import dataframe_to_csv_bytes, to_excel_bytes
 from src.geo import parse_multiple_kml
 from src.viz import fig_alternatives, fig_catalog, fig_plan_view, fig_pressure, fig_profile
@@ -128,6 +134,8 @@ if "last_params_json" not in st.session_state:
 
 catalog_df = load_pipe_catalog()
 reference_df = load_reference_library()
+catalog_payload = load_pipe_catalog_payload()
+reference_payload = load_reference_library_payload()
 page = st.sidebar.radio("Area", ["Entrada", "Resultados", "Catalogo"], index=0)
 
 source_mode = st.radio("Origem do KML", ["Exemplo do projeto", "Upload de arquivo"], horizontal=True)
@@ -389,6 +397,23 @@ elif page == "Resultados":
 
 else:
     st.markdown("### Catalogo rastreavel")
+    dl1, dl2 = st.columns(2)
+    with dl1:
+        st.download_button(
+            "Baixar pipe_catalog.json",
+            data=json.dumps(catalog_payload, indent=2, ensure_ascii=True),
+            file_name="pipe_catalog.json",
+            mime="application/json",
+            use_container_width=True,
+        )
+    with dl2:
+        st.download_button(
+            "Baixar reference_documents.json",
+            data=json.dumps(reference_payload, indent=2, ensure_ascii=True),
+            file_name="reference_documents.json",
+            mime="application/json",
+            use_container_width=True,
+        )
     st.plotly_chart(fig_catalog(catalog_df), use_container_width=True)
     st.dataframe(
         catalog_df[[

@@ -21,8 +21,13 @@ def load_reference_library() -> pd.DataFrame:
 
 
 @lru_cache(maxsize=1)
+def load_reference_library_payload() -> dict:
+    return json.loads(REFERENCE_LIBRARY_PATH.read_text())
+
+
+@lru_cache(maxsize=1)
 def load_pipe_catalog() -> pd.DataFrame:
-    payload = json.loads(CATALOG_PATH.read_text())
+    payload = load_pipe_catalog_payload()
     catalog = pd.DataFrame(payload["items"])
     numeric_cols = [
         "dn_mm",
@@ -62,6 +67,11 @@ def load_pipe_catalog() -> pd.DataFrame:
     )
     catalog["catalog_group"] = catalog["manufacturer"] + " - " + catalog["product_line"]
     return catalog.sort_values(["material", "dn_mm", "pressure_class_bar"]).reset_index(drop=True)
+
+
+@lru_cache(maxsize=1)
+def load_pipe_catalog_payload() -> dict:
+    return json.loads(CATALOG_PATH.read_text())
 
 
 def filter_catalog(catalog: pd.DataFrame, enabled_materials: Iterable[str]) -> pd.DataFrame:
