@@ -1,0 +1,1014 @@
+{
+  "version": "2026-03-10",
+  "currency": "BRL",
+  "items": [
+    {
+      "product_id": "pvc_o_wavin_dn150_pn12_5",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 12.5",
+      "dn_mm": 150,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.154,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 190,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn150_pn16",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 16",
+      "dn_mm": 150,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.15,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 205,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn150_pn20",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 20",
+      "dn_mm": 150,
+      "pressure_class_bar": 20,
+      "inner_diameter_m": 0.146,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 225,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn200_pn12_5",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 12.5",
+      "dn_mm": 200,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.202,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 245,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn200_pn16",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 16",
+      "dn_mm": 200,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.198,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 265,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn200_pn20",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 20",
+      "dn_mm": 200,
+      "pressure_class_bar": 20,
+      "inner_diameter_m": 0.194,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 290,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn250_pn12_5",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 12.5",
+      "dn_mm": 250,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.251,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 335,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn250_pn16",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 16",
+      "dn_mm": 250,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.247,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 360,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn250_pn20",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 20",
+      "dn_mm": 250,
+      "pressure_class_bar": 20,
+      "inner_diameter_m": 0.242,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 395,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn300_pn12_5",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 12.5",
+      "dn_mm": 300,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.3,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 440,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn300_pn16",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 16",
+      "dn_mm": 300,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.295,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 470,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "pvc_o_wavin_dn300_pn20",
+      "manufacturer": "Wavin",
+      "product_line": "Biax PVC-O",
+      "material": "PVC-O",
+      "series_label": "PN 20",
+      "dn_mm": 300,
+      "pressure_class_bar": 20,
+      "inner_diameter_m": 0.29,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 510,
+      "joint_type": "JEI",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn150_c25",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C25",
+      "dn_mm": 150,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.156,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 540,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn150_c30",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C30",
+      "dn_mm": 150,
+      "pressure_class_bar": 30,
+      "inner_diameter_m": 0.154,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 585,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn150_c40",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C40",
+      "dn_mm": 150,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.151,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 640,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn200_c25",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C25",
+      "dn_mm": 200,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.208,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 720,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn200_c30",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C30",
+      "dn_mm": 200,
+      "pressure_class_bar": 30,
+      "inner_diameter_m": 0.206,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 785,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn200_c40",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C40",
+      "dn_mm": 200,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.202,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 850,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn250_c25",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C25",
+      "dn_mm": 250,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.26,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 920,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn250_c30",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C30",
+      "dn_mm": 250,
+      "pressure_class_bar": 30,
+      "inner_diameter_m": 0.257,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 1000,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn250_c40",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C40",
+      "dn_mm": 250,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.254,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 1090,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn300_c25",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C25",
+      "dn_mm": 300,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.311,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 1180,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn300_c30",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C30",
+      "dn_mm": 300,
+      "pressure_class_bar": 30,
+      "inner_diameter_m": 0.308,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 1275,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "fofo_pam_dn300_c40",
+      "manufacturer": "Saint-Gobain PAM",
+      "product_line": "Natural ductile iron",
+      "material": "FoFo",
+      "series_label": "C40",
+      "dn_mm": 300,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.305,
+      "roughness_mm": 0.26,
+      "wave_speed_m_s": 980,
+      "cost_brl_per_m": 1380,
+      "joint_type": "Bolsa e junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn150_pn16",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 20",
+      "dn_mm": 150,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.1556,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 515,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 6.35,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn150_pn25",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 40",
+      "dn_mm": 150,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.1541,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 610,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 7.11,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn150_pn40",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 80",
+      "dn_mm": 150,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.1464,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 760,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 10.97,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn200_pn16",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 20",
+      "dn_mm": 200,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.2064,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 680,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 6.35,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn200_pn25",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 40",
+      "dn_mm": 200,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.2027,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 825,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 8.18,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn200_pn40",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 80",
+      "dn_mm": 200,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.1937,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1020,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 12.7,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn250_pn16",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 20",
+      "dn_mm": 250,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.2603,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 920,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 6.35,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn250_pn25",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 40",
+      "dn_mm": 250,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.2545,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1120,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 9.27,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn250_pn40",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 80",
+      "dn_mm": 250,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.2476,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1405,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 12.7,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn300_pn16",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 20",
+      "dn_mm": 300,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.3112,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1190,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 6.35,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn300_pn25",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 40",
+      "dn_mm": 300,
+      "pressure_class_bar": 25,
+      "inner_diameter_m": 0.3033,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1470,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 10.31,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn300_pn40",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "Schedule 80",
+      "dn_mm": 300,
+      "pressure_class_bar": 40,
+      "inner_diameter_m": 0.2889,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1100,
+      "cost_brl_per_m": 1870,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 17.48,
+      "cost_reference_date": "2026-03-09",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53",
+        "cost": "Weight-based fabrication reference"
+      }
+    }
+  ]
+}

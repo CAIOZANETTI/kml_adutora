@@ -1,0 +1,59 @@
+{
+  "version": "2026-03-10",
+  "references": [
+    {
+      "reference_id": "spec_nbr_iso_16422_pvc_o",
+      "category": "specification",
+      "title": "Familia PVC-O BIAX / NBR ISO 16422",
+      "publisher": "ABNT / ISO / Wavin family reference",
+      "origin_type": "catalog-and-standard-family",
+      "captured_at": "2026-03-10",
+      "notes": "Base tecnica para classes PN e diametros internos adotados nos cenarios PVC-O."
+    },
+    {
+      "reference_id": "spec_iso_2531_ductile_iron",
+      "category": "specification",
+      "title": "ISO 2531 para tubos de ferro fundido ductil",
+      "publisher": "ISO / Saint-Gobain PAM family reference",
+      "origin_type": "standard-and-manufacturer-family",
+      "captured_at": "2026-03-10",
+      "notes": "Base tecnica para classes C25, C30 e C40 e diametros internos adotados para FoFo."
+    },
+    {
+      "reference_id": "spec_nbr_5590_astm_a53_steel",
+      "category": "specification",
+      "title": "Tubos de aco carbono NBR 5590 / ASTM A53",
+      "publisher": "ABNT / ASTM / Tuper family reference",
+      "origin_type": "standard-and-dimensional-series",
+      "captured_at": "2026-03-10",
+      "notes": "Base tecnica para schedules e diametros internos dos cenarios em aco carbono."
+    },
+    {
+      "reference_id": "cost_public_infra_proxy_pvc",
+      "category": "cost_proxy",
+      "title": "Curadoria de mercado e proxies de infraestrutura para PVC-O",
+      "publisher": "Internal JSON registry",
+      "origin_type": "curated-proxy",
+      "captured_at": "2026-03-10",
+      "notes": "Custo-base de comparacao tecnico-economica, nao equivalente a cotacao executiva."
+    },
+    {
+      "reference_id": "cost_seinfra_market_proxy_fofo",
+      "category": "cost_proxy",
+      "title": "SEINFRA e referencia de mercado para FoFo",
+      "publisher": "Internal JSON registry",
+      "origin_type": "curated-proxy",
+      "captured_at": "2026-03-10",
+      "notes": "Combinacao de referencia publica de infraestrutura e ajuste de mercado para ferro fundido ductil."
+    },
+    {
+      "reference_id": "cost_weight_fabrication_proxy_steel",
+      "category": "cost_proxy",
+      "title": "Referencia de fabricacao por peso para aco carbono",
+      "publisher": "Internal JSON registry",
+      "origin_type": "curated-proxy",
+      "captured_at": "2026-03-10",
+      "notes": "Custo-base derivado de serie dimensional e fabricacao, usado so para ranking preliminar."
+    }
+  ]
+}

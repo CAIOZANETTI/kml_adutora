@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Adutora Demo</name>
+    <Placemark>
+      <name>Adutora Piloto</name>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          -47.060000,-22.900000,638
+          -47.055500,-22.898600,645
+          -47.051000,-22.897100,652
+          -47.046000,-22.895700,648
+          -47.041200,-22.894400,660
+          -47.036500,-22.893700,655
+          -47.031900,-22.892900,670
+          -47.027400,-22.892100,663
+          -47.022500,-22.891300,675
+          -47.017200,-22.890500,669
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>
