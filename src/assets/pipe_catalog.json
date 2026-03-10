@@ -2103,6 +2103,286 @@
       }
     },
     {
+      "product_id": "aco_a53_dn150_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 150,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.1337,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 1100,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 17.28,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn200_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 200,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.1791,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 1500,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.0,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn250_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 250,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.2329,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 2050,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.08,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn300_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 300,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.2688,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 2700,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 27.56,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn350_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 350,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.3153,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 3600,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.16,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn400_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 400,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.3664,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 4400,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.0,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn500_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 500,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.4686,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 5950,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 19.69,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn600_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 600,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.5693,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 7550,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.16,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn700_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 700,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.6715,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 9700,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 19.84,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "aco_a53_dn800_pn63",
+      "manufacturer": "Tuper / NBR 5590",
+      "product_line": "Carbon steel welded",
+      "material": "Aco carbono",
+      "series_label": "PN 63",
+      "dn_mm": 800,
+      "pressure_class_bar": 63,
+      "inner_diameter_m": 0.7722,
+      "roughness_mm": 0.045,
+      "wave_speed_m_s": 1200,
+      "cost_brl_per_m": 12050,
+      "joint_type": "Ponta lisa",
+      "wall_thickness_mm": 20.32,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 5590 / ASTM A53 — parede proporcional PN 63",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
       "product_id": "pead_pe100_dn200_sdr17",
       "manufacturer": "Tigre / Amanco",
       "product_line": "PEAD PE100",

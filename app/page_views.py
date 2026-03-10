@@ -27,11 +27,15 @@ from ui_shared import (
 
 def _with_status(df: pd.DataFrame) -> pd.DataFrame:
     """Adiciona coluna 'status' legivel indicando o motivo de inviabilidade."""
+    max_op = float(st.session_state.diagnostic_inputs.get("max_operating_pressure_bar", 9999))
+
     def _label(row):
         if row.get("static_vacuum_risk", False):
             return "Vacuo estatico"
         if not row.get("pressure_class_ok", True):
             return "Pressao excede PN"
+        if float(row.get("max_pressure_bar", 0)) > max_op:
+            return "Acima limite op."
         if not row.get("velocity_ok", True):
             return "Velocidade fora"
         if row.get("subpressure_risk", False):
@@ -188,6 +192,14 @@ def render_diagnostico() -> None:
     metric_cols[1].metric("Pressao maxima", f"{result['kpis']['max_pressure_bar']:.2f} bar")
     metric_cols[2].metric("Bombeamento preliminar", f"{result['kpis']['pump_head_m']:.1f} m")
     metric_cols[3].metric("Zonas finais", f"{result['kpis']['zone_count']}")
+
+    max_op = float(st.session_state.diagnostic_inputs["max_operating_pressure_bar"])
+    max_computed = float(result["kpis"]["max_pressure_bar"])
+    if max_computed > max_op:
+        st.warning(
+            f"Pressao maxima calculada ({max_computed:.1f} bar) excede o limite admissivel configurado ({max_op:.1f} bar). "
+            "Considere materiais de classe de pressao superior (ex: Aco carbono PN 63) ou reducao de carga de montante."
+        )
 
     st.plotly_chart(fig_profile(result["detail_df"]), use_container_width=True)
     st.dataframe(

@@ -256,6 +256,7 @@ def build_effective_params() -> dict:
         "upstream_residual_head_m": float(diagnostic["upstream_head_m"]),
         "minimum_pressure_head_m": float(diagnostic["minimum_head_m"]),
         "terminal_pressure_head_m": float(diagnostic["terminal_head_m"]),
+        "max_operating_pressure_bar": float(diagnostic["max_operating_pressure_bar"]),
         "localized_loss_factor": float(steady["localized_loss_factor"]),
         "enabled_materials": list(scenarios["enabled_materials"]),
         "velocity_min_m_s": float(steady["velocity_min_m_s"]),
