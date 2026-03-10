@@ -143,7 +143,7 @@ def run_hydraulic_scenarios(base_arrays: Dict[str, np.ndarray], scenario_props: 
         "pressure_class_points_bar": pressure_class_points_bar,
         "wave_speed_points_m_s": wave_speed_points_m_s,
         "velocity_seg_m_s": velocity_seg_m_s,
-        "velocity_points_m_s": velocity_head_points_m * 0.0 + _segment_to_point(velocity_seg_m_s),
+        "velocity_points_m_s": _segment_to_point(velocity_seg_m_s),
         "reynolds_seg": reynolds_seg,
         "friction_seg": friction_seg,
         "hf_dist_seg_m": hf_dist_seg_m,

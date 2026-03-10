@@ -17,6 +17,7 @@ from src import (
     load_reference_library_payload,
 )
 from src.geo import build_base_dataframe, build_stationing, enrich_elevation, parse_multiple_kml
+from src.geo.elevation import ElevationAPIError
 
 ROOT = Path(__file__).resolve().parents[1]
 SAMPLE_KML = ROOT / "sample" / "adutora_demo.kml"
@@ -51,7 +52,6 @@ DEFAULT_INPUTS = {
         "friction_method": "Darcy-Weisbach",
     },
     "transient": {
-        "event_type": "Envelope combinado",
         "surge_closure_factor": 0.35,
         "surge_trip_factor": 0.45,
         "minimum_transient_pressure_bar": -0.2,
@@ -147,15 +147,30 @@ def parse_files_cached(files_payload: tuple[tuple[str, bytes], ...]) -> list[dic
 
 
 @st.cache_data(show_spinner=False)
+def _build_profile_cached(
+    files_payload: tuple[tuple[str, bytes], ...],
+    alignment_id: str,
+    station_interval_m: float,
+    elevation_source: str,
+) -> pd.DataFrame:
+    """Builds the interpolated + elevation-enriched base DataFrame.
+
+    Cached independently so both the trace preview and the full analysis
+    share the same result, avoiding a redundant Open-Meteo API call.
+    """
+    alignments = parse_files_cached(files_payload)
+    alignment = next(item for item in alignments if item["alignment_id"] == alignment_id)
+    station_points = build_stationing(alignment["points"], station_interval_m=float(station_interval_m))
+    station_points = enrich_elevation(station_points, source=elevation_source)
+    return build_base_dataframe(station_points)
+
+
+@st.cache_data(show_spinner=False)
 def prepare_trace_preview_cached(files_payload: tuple[tuple[str, bytes], ...], alignment_id: str, params_json: str) -> dict:
     alignments = parse_files_cached(files_payload)
     alignment = next(item for item in alignments if item["alignment_id"] == alignment_id)
     params = json.loads(params_json)
-
-    station_points = build_stationing(alignment["points"], station_interval_m=float(params["station_interval_m"]))
-    station_points = enrich_elevation(station_points, source=params["elevation_source"])
-    base_df = build_base_dataframe(station_points)
-
+    base_df = _build_profile_cached(files_payload, alignment_id, float(params["station_interval_m"]), params["elevation_source"])
     return {
         "alignment_id": alignment_id,
         "base_df": base_df,
@@ -173,7 +188,8 @@ def run_full_analysis_cached(files_payload: tuple[tuple[str, bytes], ...], align
     alignments = parse_files_cached(files_payload)
     alignment = next(item for item in alignments if item["alignment_id"] == alignment_id)
     params = json.loads(params_json)
-    return analyze_alignment(alignment, params)
+    base_df = _build_profile_cached(files_payload, alignment_id, float(params["station_interval_m"]), params["elevation_source"])
+    return analyze_alignment(alignment, params, base_df=base_df)
 
 
 def init_state() -> None:
@@ -256,6 +272,7 @@ def build_effective_params() -> dict:
         "upstream_residual_head_m": float(diagnostic["upstream_head_m"]),
         "minimum_pressure_head_m": float(diagnostic["minimum_head_m"]),
         "terminal_pressure_head_m": float(diagnostic["terminal_head_m"]),
+        "max_operating_pressure_bar": float(diagnostic["max_operating_pressure_bar"]),
         "localized_loss_factor": float(steady["localized_loss_factor"]),
         "enabled_materials": list(scenarios["enabled_materials"]),
         "velocity_min_m_s": float(steady["velocity_min_m_s"]),
@@ -284,7 +301,11 @@ def run_full_analysis() -> dict:
     if not st.session_state.files_payload or not st.session_state.selected_alignment:
         raise RuntimeError("Defina o tracado antes de rodar a analise.")
     params_json = json.dumps(build_effective_params(), sort_keys=True)
-    result = run_full_analysis_cached(st.session_state.files_payload, st.session_state.selected_alignment, params_json)
+    try:
+        result = run_full_analysis_cached(st.session_state.files_payload, st.session_state.selected_alignment, params_json)
+    except ElevationAPIError as exc:
+        st.error(f"Erro ao obter cotas de elevacao: {exc}")
+        st.stop()
     st.session_state.analysis_result = result
     return result
 
@@ -309,7 +330,7 @@ def stage_is_complete(stage_name: str) -> bool:
 
 def require_stage(stage_name: str) -> None:
     if not stage_is_complete(stage_name):
-        st.info(f"Conclua a etapa '{stage_name}' para liberar esta page.")
+        st.info(f"Conclua a etapa '{stage_name}' para liberar esta página.")
         st.stop()
 
 

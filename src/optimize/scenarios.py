@@ -139,6 +139,7 @@ def optimize_zoned_layout(
     zone_count = int(zoning["zone_count"])
     max_combo_evals = int(params.get("max_combo_evals", 50000))
     n_candidates = len(shortlist_df)
+    candidates_original = n_candidates
     while zone_count > 0 and (n_candidates ** zone_count) > max_combo_evals and n_candidates > 2:
         n_candidates -= 1
     shortlist_df = shortlist_df.head(n_candidates).reset_index(drop=True)
@@ -187,4 +188,7 @@ def optimize_zoned_layout(
         "transient": transient,
         "best_combo": best_combo,
         "grid": grid,
+        "candidates_used": n_candidates,
+        "candidates_original": candidates_original,
+        "max_combo_evals": max_combo_evals,
     }

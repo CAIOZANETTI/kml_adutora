@@ -8,6 +8,7 @@ import pandas as pd
 import streamlit as st
 
 from src.export import dataframe_to_csv_bytes, to_excel_bytes
+from src.geo.elevation import ElevationAPIError
 from src.viz import fig_alternatives, fig_catalog, fig_pressure, fig_profile
 
 from ui_shared import (
@@ -27,11 +28,15 @@ from ui_shared import (
 
 def _with_status(df: pd.DataFrame) -> pd.DataFrame:
     """Adiciona coluna 'status' legivel indicando o motivo de inviabilidade."""
+    max_op = float(st.session_state.diagnostic_inputs.get("max_operating_pressure_bar", 9999))
+
     def _label(row):
         if row.get("static_vacuum_risk", False):
             return "Vacuo estatico"
         if not row.get("pressure_class_ok", True):
             return "Pressao excede PN"
+        if float(row.get("max_pressure_bar", 0)) > max_op:
+            return "Acima limite op."
         if not row.get("velocity_ok", True):
             return "Velocidade fora"
         if row.get("subpressure_risk", False):
@@ -118,11 +123,15 @@ def render_tracado() -> None:
         }
         params_json = json.dumps(preview_params, sort_keys=True)
         with st.spinner("Lendo eixo e preparando o preview do perfil..."):
-            st.session_state.trace_preview = prepare_trace_preview_cached(
-                st.session_state.files_payload,
-                st.session_state.selected_alignment,
-                params_json,
-            )
+            try:
+                st.session_state.trace_preview = prepare_trace_preview_cached(
+                    st.session_state.files_payload,
+                    st.session_state.selected_alignment,
+                    params_json,
+                )
+            except ElevationAPIError as exc:
+                st.error(f"Erro ao obter cotas de elevação: {exc}")
+                st.stop()
             st.session_state.stage_status["Tracado"] = True
 
     preview = st.session_state.trace_preview
@@ -189,6 +198,14 @@ def render_diagnostico() -> None:
     metric_cols[2].metric("Bombeamento preliminar", f"{result['kpis']['pump_head_m']:.1f} m")
     metric_cols[3].metric("Zonas finais", f"{result['kpis']['zone_count']}")
 
+    max_op = float(st.session_state.diagnostic_inputs["max_operating_pressure_bar"])
+    max_computed = float(result["kpis"]["max_pressure_bar"])
+    if max_computed > max_op:
+        st.warning(
+            f"Pressao maxima calculada ({max_computed:.1f} bar) excede o limite admissivel configurado ({max_op:.1f} bar). "
+            "Considere materiais de classe de pressao superior (ex: Aco carbono PN 63) ou reducao de carga de montante."
+        )
+
     st.plotly_chart(fig_profile(result["detail_df"]), use_container_width=True)
     st.dataframe(
         result["critical_points_df"].head(8),
@@ -214,10 +231,9 @@ def render_regime_permanente() -> None:
 
     defaults = st.session_state.steady_inputs
     with st.form("form_regime"):
-        localized_loss_factor = st.slider("Perdas localizadas simplificadas", min_value=0.0, max_value=0.5, value=float(defaults["localized_loss_factor"]), step=0.01)
+        localized_loss_factor = st.slider("Perdas localizadas simplificadas", min_value=0.0, max_value=0.5, value=float(defaults["localized_loss_factor"]), step=0.01, help="Fator multiplicador sobre as perdas distribuídas (ex: 0.10 = 10% adicional para conexões e acessórios).")
         velocity_min_m_s = st.number_input("Velocidade minima (m/s)", min_value=0.1, value=float(defaults["velocity_min_m_s"]), step=0.1)
         velocity_max_m_s = st.number_input("Velocidade maxima (m/s)", min_value=0.5, value=float(defaults["velocity_max_m_s"]), step=0.1)
-        friction_method = st.selectbox("Metodo de atrito", ["Darcy-Weisbach"], index=0)
         submitted = st.form_submit_button("Atualizar regime permanente", type="primary")
 
     if submitted:
@@ -226,7 +242,6 @@ def render_regime_permanente() -> None:
                 "localized_loss_factor": localized_loss_factor,
                 "velocity_min_m_s": velocity_min_m_s,
                 "velocity_max_m_s": velocity_max_m_s,
-                "friction_method": friction_method,
             }
         )
         invalidate_after("Regime permanente")
@@ -240,21 +255,22 @@ def render_regime_permanente() -> None:
         return
 
     st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
-    st.markdown("#### Tabela por trecho")
-    st.dataframe(
-        result["detail_df"][[
-            "dist_acum_m",
-            "material",
-            "dn_mm",
-            "velocity_m_s",
-            "head_loss_segment_m",
-            "head_loss_cumulative_m",
-            "pressure_bar",
-        ]],
-        use_container_width=True,
-        hide_index=True,
-        height=360,
-    )
+
+    with st.expander("Tabela por trecho", expanded=False):
+        st.dataframe(
+            result["detail_df"][[
+                "dist_acum_m",
+                "material",
+                "dn_mm",
+                "velocity_m_s",
+                "head_loss_segment_m",
+                "head_loss_cumulative_m",
+                "pressure_bar",
+            ]],
+            use_container_width=True,
+            hide_index=True,
+            height=360,
+        )
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
@@ -277,16 +293,14 @@ def render_transientes() -> None:
 
     defaults = st.session_state.transient_inputs
     with st.form("form_transientes"):
-        event_type = st.selectbox("Evento considerado", ["Envelope combinado", "Fechamento rapido", "Parada de bomba"], index=["Envelope combinado", "Fechamento rapido", "Parada de bomba"].index(defaults["event_type"]))
-        surge_closure_factor = st.slider("Severidade de sobrepressao", min_value=0.10, max_value=1.00, value=float(defaults["surge_closure_factor"]), step=0.05)
-        surge_trip_factor = st.slider("Severidade de subpressao", min_value=0.10, max_value=1.00, value=float(defaults["surge_trip_factor"]), step=0.05)
+        surge_closure_factor = st.slider("Fator de sobrepressao (fechamento)", min_value=0.10, max_value=1.00, value=float(defaults["surge_closure_factor"]), step=0.05, help="Fração da velocidade usada no envelope de sobrepressão de Joukowsky (fechamento rápido).")
+        surge_trip_factor = st.slider("Fator de subpressao (parada de bomba)", min_value=0.10, max_value=1.00, value=float(defaults["surge_trip_factor"]), step=0.05, help="Fração da velocidade usada no envelope de subpressão de Joukowsky (trip de bomba).")
         minimum_transient_pressure_bar = st.number_input("Limite minimo em transiente (bar)", value=float(defaults["minimum_transient_pressure_bar"]), step=0.1)
         submitted = st.form_submit_button("Atualizar transientes", type="primary")
 
     if submitted:
         st.session_state.transient_inputs.update(
             {
-                "event_type": event_type,
                 "surge_closure_factor": surge_closure_factor,
                 "surge_trip_factor": surge_trip_factor,
                 "minimum_transient_pressure_bar": minimum_transient_pressure_bar,
@@ -308,12 +322,19 @@ def render_transientes() -> None:
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
-        st.write(f"Evento considerado: {st.session_state.transient_inputs['event_type']}")
         st.write(f"Fator de sobrepressao: {st.session_state.transient_inputs['surge_closure_factor']:.2f}")
         st.write(f"Fator de subpressao: {st.session_state.transient_inputs['surge_trip_factor']:.2f}")
         st.write(f"Delta maximo de sobrepressao: {detail_df['positive_surge_bar'].max():.2f} bar")
         st.write(f"Ponto critico de subpressao: {detail_df['pressure_min_transient_bar'].min():.2f} bar")
         st.write("Hipoteses: envelope simplificado de Joukowsky e indicacao preliminar de protecao.")
+
+
+_RANKING_COLS = [
+    "tipo", "scenario_label", "dn_mm", "pressure_class_bar",
+    "max_pressure_bar", "max_transient_bar", "velocity_m_s",
+    "pump_head_required_m", "objective_cost_brl",
+]
+_REPROVADO_COLS = ["motivo", "tipo", "scenario_label", "dn_mm", "pressure_class_bar"]
 
 
 def render_cenarios() -> None:
@@ -335,11 +356,12 @@ def render_cenarios() -> None:
         max_zone_length_m = st.number_input("Comprimento maximo de zona (m)", min_value=300.0, value=float(defaults["max_zone_length_m"]), step=100.0)
         max_zones = st.slider("Numero maximo de zonas", min_value=1, max_value=6, value=int(defaults["max_zones"]), disabled=not mix_materials_by_zone)
         recommendation_priority = st.selectbox("Prioridade da comparacao", priority_options, index=priority_options.index(defaults["recommendation_priority"]))
-        pump_efficiency = st.slider("Rendimento estimado de bombeamento", min_value=0.40, max_value=0.90, value=float(defaults["pump_efficiency"]), step=0.01)
-        energy_cost_brl_per_kwh = st.number_input("Custo de energia (R$/kWh)", min_value=0.0, value=float(defaults["energy_cost_brl_per_kwh"]), step=0.05)
-        energy_horizon_years = st.number_input("Horizonte energetico (anos)", min_value=1.0, value=float(defaults["energy_horizon_years"]), step=1.0)
-        operating_hours_per_year = st.number_input("Horas equivalentes por ano", min_value=100.0, value=float(defaults["operating_hours_per_year"]), step=100.0)
-        transition_node_cost_brl = st.number_input("Custo por transicao entre zonas (R$)", min_value=0.0, value=float(defaults["transition_node_cost_brl"]), step=1000.0)
+        with st.expander("Parâmetros econômicos avançados"):
+            pump_efficiency = st.slider("Rendimento estimado de bombeamento", min_value=0.40, max_value=0.90, value=float(defaults["pump_efficiency"]), step=0.01)
+            energy_cost_brl_per_kwh = st.number_input("Custo de energia (R$/kWh)", min_value=0.0, value=float(defaults["energy_cost_brl_per_kwh"]), step=0.05)
+            energy_horizon_years = st.number_input("Horizonte energetico (anos)", min_value=1.0, value=float(defaults["energy_horizon_years"]), step=1.0)
+            operating_hours_per_year = st.number_input("Horas equivalentes por ano", min_value=100.0, value=float(defaults["operating_hours_per_year"]), step=100.0)
+            transition_node_cost_brl = st.number_input("Custo por transicao entre zonas (R$)", min_value=0.0, value=float(defaults["transition_node_cost_brl"]), step=1000.0)
         submitted = st.form_submit_button("Comparar cenarios", type="primary")
 
     if submitted:
@@ -368,46 +390,48 @@ def render_cenarios() -> None:
         st.info("A comparacao depende dos resultados das etapas anteriores.")
         return
 
+    for warning in result.get("warnings", []):
+        st.warning(warning)
+
     priority = st.session_state.scenario_inputs["recommendation_priority"]
     uniform_ranked = rank_scenarios_for_display(result["uniform_df"], priority)
     zoned_ranked = rank_scenarios_for_display(result["zoned_df"], priority)
 
-    st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
+    # Consolida viaveis e reprovados de ambas as abordagens numa unica visao
+    viaveis = pd.concat([
+        uniform_ranked[uniform_ranked["is_feasible"]].assign(tipo="Uniforme"),
+        zoned_ranked[zoned_ranked["is_feasible"]].assign(tipo="Por trechos"),
+    ]).reset_index(drop=True)
+    if "score_global" in viaveis.columns:
+        viaveis = viaveis.sort_values("score_global", ascending=False).reset_index(drop=True)
 
-    display_cols = [
-        "status",
-        "scenario_label",
-        "dn_mm",
-        "pressure_class_bar",
-        "max_pressure_bar",
-        "max_transient_bar",
-        "velocity_m_s",
-        "pump_head_required_m",
-        "objective_cost_brl",
-        "score_global",
-    ]
+    reprovados_raw = pd.concat([
+        _with_status(uniform_ranked[~uniform_ranked["is_feasible"]]).assign(tipo="Uniforme"),
+        _with_status(zoned_ranked[~zoned_ranked["is_feasible"]]).assign(tipo="Por trechos"),
+    ]).reset_index(drop=True).rename(columns={"status": "motivo"})
 
-    st.markdown("#### Uniforme")
-    st.dataframe(
-        _with_status(uniform_ranked).head(10)[[c for c in display_cols if c in _with_status(uniform_ranked).columns]],
-        use_container_width=True,
-        hide_index=True,
-    )
-    st.markdown("#### Por trechos")
-    st.dataframe(
-        _with_status(zoned_ranked).head(10)[[c for c in display_cols if c in _with_status(zoned_ranked).columns]],
-        use_container_width=True,
-        hide_index=True,
-    )
+    if len(viaveis) == 0:
+        st.error(
+            f"Nenhum cenario viavel encontrado ({len(reprovados_raw)} reprovados). "
+            "Revise os materiais habilitados ou os limites de pressao/velocidade."
+        )
+        with st.expander(f"Reprovados — {len(reprovados_raw)} cenarios"):
+            avail = [c for c in _REPROVADO_COLS if c in reprovados_raw.columns]
+            st.dataframe(reprovados_raw[avail], use_container_width=True, hide_index=True)
+        return
 
-    with st.expander("Log tecnico", expanded=False):
-        uniform_df = result["uniform_df"]
-        zoned_df = result["zoned_df"]
-        st.write(f"Numero total de cenarios uniformes testados: {len(uniform_df)}")
-        st.write(f"Numero de combinacoes por trechos testadas: {len(zoned_df)}")
-        st.write(f"Cenarios descartados por inviabilidade: {(~uniform_df['is_feasible']).sum()}")
-        st.write(f"Prioridade ativa na comparacao: {priority}")
-        st.write("Justificativa do lider: ordenacao por score global calculado a partir de score tecnico e economico de exibicao.")
+    st.success(f"{len(viaveis)} cenario(s) viavel(is) — {len(reprovados_raw)} reprovado(s) por criterio tecnico.")
+
+    avail = [c for c in _RANKING_COLS if c in viaveis.columns]
+    st.dataframe(viaveis[avail], use_container_width=True, hide_index=True)
+
+    if len(reprovados_raw):
+        with st.expander(f"Reprovados ({len(reprovados_raw)}) — motivo da reprovacao"):
+            avail2 = [c for c in _REPROVADO_COLS if c in reprovados_raw.columns]
+            st.dataframe(reprovados_raw[avail2], use_container_width=True, hide_index=True)
+
+    with st.expander("Grafico comparativo", expanded=False):
+        st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
 
 
 def render_solucao_final() -> None:
@@ -424,6 +448,8 @@ def render_solucao_final() -> None:
         return
 
     st.session_state.stage_status["Solucao final"] = True
+    for warning in result.get("warnings", []):
+        st.warning(warning)
     best = result["best_layout"]
     metric_cols = st.columns(5)
     metric_cols[0].metric("Extensao", f"{result['kpis']['total_length_m']:.0f} m")
@@ -432,14 +458,10 @@ def render_solucao_final() -> None:
     metric_cols[3].metric("Transiente min.", f"{result['kpis']['min_transient_bar']:.2f} bar")
     metric_cols[4].metric("Custo proxy", f"R$ {result['kpis']['objective_cost_brl']:,.0f}")
 
-    st.markdown("### Recomendacao consolidada")
     st.markdown(
-        f"""
-        - Solucao recomendada: `{best['zone_signature']}`
-        - Melhor uniforme de referencia: `{result['uniform_best']['scenario_label']}`
-        - Zonas finais consolidadas: `{result['kpis']['zone_count']}`
-        - Fonte de elevacao: `{result['elevation_source']}`
-        """
+        f"**Recomendado:** `{best['zone_signature']}`  \n"
+        f"Referencia uniforme: `{result['uniform_best']['scenario_label']}` — "
+        f"{result['kpis']['zone_count']} zona(s) — elevacao via `{result['elevation_source']}`"
     )
 
     export_tables = {
@@ -459,23 +481,21 @@ def render_solucao_final() -> None:
     with d3:
         st.download_button("Gerar resumo tecnico", build_solution_summary_text(result), file_name=f"resumo_{result['alignment_id']}.txt", mime="text/plain", use_container_width=True)
 
-    t1, t2 = st.columns(2)
-    with t1:
-        st.markdown("#### Tubos por trecho")
+    tab_tubos, tab_disp, tab_crit, tab_mat = st.tabs(["Tubulacao por trecho", "Dispositivos sugeridos", "Pontos criticos", "Lista de materiais"])
+    with tab_tubos:
         st.dataframe(result["zone_solution_df"], use_container_width=True, hide_index=True)
-        st.markdown("#### Lista preliminar de materiais")
-        st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
-    with t2:
-        st.markdown("#### Dispositivos sugeridos")
+    with tab_disp:
         st.dataframe(result["devices_df"], use_container_width=True, hide_index=True)
-        st.markdown("#### Pontos criticos")
+    with tab_crit:
         st.dataframe(result["critical_points_df"], use_container_width=True, hide_index=True)
+    with tab_mat:
+        st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
 
     with st.expander("Log tecnico", expanded=False):
         st.write(f"Cenario selecionado: {best['zone_signature']}")
-        st.write(f"Trade-offs aceitos: custo proxy {best['objective_cost_brl']:.0f} e bombeamento {best['pump_head_required_m']:.2f} m")
-        st.write("Limitacoes do estudo: pre-dimensionamento preliminar, transientes simplificados e custos-base de referencia.")
-        st.write("Pendencias para detalhamento executivo: topografia definitiva, modelagem transitoria refinada e cotacao real de fornecimento.")
+        st.write(f"Custo proxy: R$ {best['objective_cost_brl']:,.0f} — bombeamento: {best['pump_head_required_m']:.2f} m")
+        st.write("Limitacoes: pre-dimensionamento preliminar, transientes simplificados, custos-base de referencia.")
+        st.write("Pendencias executivas: topografia definitiva, modelagem transitoria refinada, cotacao real de fornecimento.")
 
 
 def render_catalogo() -> None:

@@ -19,7 +19,7 @@ from .scenarios import evaluate_uniform_catalog, optimize_zoned_layout, shortlis
 from .zoning import build_zones
 
 
-def _warnings(best_layout: pd.Series, uniform_best: pd.Series) -> List[str]:
+def _warnings(best_layout: pd.Series, uniform_best: pd.Series, zoned_eval: Dict) -> List[str]:
     warnings: List[str] = []
     if not bool(best_layout["is_feasible"]):
         warnings.append("Nenhuma combinacao por trechos atendeu integralmente aos criterios. A melhor solucao abaixo e indicativa.")
@@ -28,14 +28,21 @@ def _warnings(best_layout: pd.Series, uniform_best: pd.Series) -> List[str]:
     if float(best_layout["pump_head_required_m"]) > 0.01:
         warnings.append("Foi identificada necessidade preliminar de bombeamento para garantir as pressoes minimas configuradas.")
     if float(best_layout["objective_cost_brl"]) < float(uniform_best["objective_cost_brl"]):
-        warnings.append("A otimiza\u00e7\u00e3o por trechos melhorou o custo tecnico-economico em relacao \u00e0 melhor solucao uniforme.")
+        warnings.append("A otimização por trechos melhorou o custo tecnico-economico em relação à melhor solução uniforme.")
+    if int(zoned_eval.get("candidates_used", 0)) < int(zoned_eval.get("candidates_original", 0)):
+        warnings.append(
+            f"Shortlist reduzido de {zoned_eval['candidates_original']} para {zoned_eval['candidates_used']} "
+            f"candidatos para respeitar o limite de {zoned_eval['max_combo_evals']:,} combinações. "
+            "Aumente 'max_combo_evals' ou reduza o número de zonas para avaliar o shortlist completo."
+        )
     return warnings
 
 
-def analyze_alignment(alignment: Dict, params: Dict, catalog_df: pd.DataFrame | None = None) -> Dict:
-    station_points = build_stationing(alignment["points"], station_interval_m=float(params["station_interval_m"]))
-    station_points = enrich_elevation(station_points, source=params["elevation_source"])
-    base_df = build_base_dataframe(station_points)
+def analyze_alignment(alignment: Dict, params: Dict, catalog_df: pd.DataFrame | None = None, base_df: pd.DataFrame | None = None) -> Dict:
+    if base_df is None:
+        station_points = build_stationing(alignment["points"], station_interval_m=float(params["station_interval_m"]))
+        station_points = enrich_elevation(station_points, source=params["elevation_source"])
+        base_df = build_base_dataframe(station_points)
     base_arrays = build_profile_arrays(base_df)
 
     catalog = load_pipe_catalog() if catalog_df is None else catalog_df.copy()
@@ -97,7 +104,7 @@ def analyze_alignment(alignment: Dict, params: Dict, catalog_df: pd.DataFrame | 
         "kpis": kpis,
         "best_layout": best_layout.to_dict(),
         "uniform_best": uniform_best.to_dict(),
-        "warnings": _warnings(best_layout, uniform_best),
+        "warnings": _warnings(best_layout, uniform_best, zoned_eval),
         "zoning": zoning,
         "elevation_source": detail_df["elevation_source"].iloc[0],
     }

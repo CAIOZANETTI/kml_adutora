@@ -11,21 +11,37 @@ _BATCH_SIZE = 100
 _TIMEOUT = (4, 12)
 
 
+class ElevationAPIError(RuntimeError):
+    """Raised when the elevation API is unreachable or returns an error."""
+
+
 def _fetch_batch(lats: List[float], lons: List[float], session: Optional[requests.Session] = None) -> List[float]:
     http = session or requests
-    response = http.get(
-        _API_URL,
-        params={
-            "latitude": ",".join(str(value) for value in lats),
-            "longitude": ",".join(str(value) for value in lons),
-        },
-        timeout=_TIMEOUT,
-    )
-    response.raise_for_status()
+    try:
+        response = http.get(
+            _API_URL,
+            params={
+                "latitude": ",".join(str(value) for value in lats),
+                "longitude": ",".join(str(value) for value in lons),
+            },
+            timeout=_TIMEOUT,
+        )
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as exc:
+        status = exc.response.status_code if exc.response is not None else "?"
+        raise ElevationAPIError(
+            f"API Open-Meteo retornou HTTP {status}. "
+            "Verifique os limites de uso ou use um KML com cotas Z."
+        ) from exc
+    except requests.exceptions.RequestException as exc:
+        raise ElevationAPIError(
+            f"Falha ao conectar na API de elevacao: {exc}. "
+            "Verifique a conexao ou use um KML com cotas Z."
+        ) from exc
     payload = response.json()
     elevations = payload.get("elevation", [])
     if len(elevations) != len(lats):
-        raise RuntimeError(
+        raise ElevationAPIError(
             f"Resposta de elevacao inconsistente: {len(elevations)} cotas para {len(lats)} pontos."
         )
     return [float(value) for value in elevations]
@@ -49,16 +65,27 @@ def enrich_elevation(points: List[Dict], source: str = "auto", progress_callback
     if source == "kml" and not can_use_kml:
         raise RuntimeError("O KML nao possui cotas em todos os pontos necessarios.")
 
-    with requests.Session() as session:
-        all_elevations: List[float] = []
-        total = len(points)
-        for start in range(0, total, _BATCH_SIZE):
-            batch = points[start : start + _BATCH_SIZE]
-            lats = [point["lat"] for point in batch]
-            lons = [point["lon"] for point in batch]
-            all_elevations.extend(_fetch_batch(lats, lons, session=session))
+    try:
+        with requests.Session() as session:
+            all_elevations: List[float] = []
+            total = len(points)
+            for start in range(0, total, _BATCH_SIZE):
+                batch = points[start : start + _BATCH_SIZE]
+                lats = [point["lat"] for point in batch]
+                lons = [point["lon"] for point in batch]
+                all_elevations.extend(_fetch_batch(lats, lons, session=session))
+                if progress_callback:
+                    progress_callback(min(start + _BATCH_SIZE, total), total)
+    except ElevationAPIError:
+        if can_use_kml:
+            # Fallback silencioso para cotas do KML quando a API falha
+            for point in points:
+                point["z_terrain_m"] = float(point["z_hint_m"])
+                point["elevation_source"] = "kml-fallback"
             if progress_callback:
-                progress_callback(min(start + _BATCH_SIZE, total), total)
+                progress_callback(len(points), len(points))
+            return points
+        raise
 
     for point, elevation in zip(points, all_elevations):
         point["z_terrain_m"] = float(elevation)
