@@ -17,6 +17,7 @@ from src import (
     load_reference_library_payload,
 )
 from src.geo import build_base_dataframe, build_stationing, enrich_elevation, parse_multiple_kml
+from src.geo.elevation import ElevationAPIError
 
 ROOT = Path(__file__).resolve().parents[1]
 SAMPLE_KML = ROOT / "sample" / "adutora_demo.kml"
@@ -285,7 +286,11 @@ def run_full_analysis() -> dict:
     if not st.session_state.files_payload or not st.session_state.selected_alignment:
         raise RuntimeError("Defina o tracado antes de rodar a analise.")
     params_json = json.dumps(build_effective_params(), sort_keys=True)
-    result = run_full_analysis_cached(st.session_state.files_payload, st.session_state.selected_alignment, params_json)
+    try:
+        result = run_full_analysis_cached(st.session_state.files_payload, st.session_state.selected_alignment, params_json)
+    except ElevationAPIError as exc:
+        st.error(f"Erro ao obter cotas de elevacao: {exc}")
+        st.stop()
     st.session_state.analysis_result = result
     return result
 
