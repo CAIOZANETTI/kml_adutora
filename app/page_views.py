@@ -8,10 +8,10 @@ import pandas as pd
 import streamlit as st
 
 from src.export import dataframe_to_csv_bytes, to_excel_bytes
-from src.geo.elevation import ElevationAPIError
 from src.viz import fig_alternatives, fig_catalog, fig_pressure, fig_profile
 
 from ui_shared import (
+    ElevationAPIError,
     build_solution_summary_text,
     get_catalog_assets,
     invalidate_after,
