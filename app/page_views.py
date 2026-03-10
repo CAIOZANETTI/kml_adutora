@@ -255,21 +255,22 @@ def render_regime_permanente() -> None:
         return
 
     st.plotly_chart(fig_pressure(result["detail_df"]), use_container_width=True)
-    st.markdown("#### Tabela por trecho")
-    st.dataframe(
-        result["detail_df"][[
-            "dist_acum_m",
-            "material",
-            "dn_mm",
-            "velocity_m_s",
-            "head_loss_segment_m",
-            "head_loss_cumulative_m",
-            "pressure_bar",
-        ]],
-        use_container_width=True,
-        hide_index=True,
-        height=360,
-    )
+
+    with st.expander("Tabela por trecho", expanded=False):
+        st.dataframe(
+            result["detail_df"][[
+                "dist_acum_m",
+                "material",
+                "dn_mm",
+                "velocity_m_s",
+                "head_loss_segment_m",
+                "head_loss_cumulative_m",
+                "pressure_bar",
+            ]],
+            use_container_width=True,
+            hide_index=True,
+            height=360,
+        )
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
@@ -328,40 +329,12 @@ def render_transientes() -> None:
         st.write("Hipoteses: envelope simplificado de Joukowsky e indicacao preliminar de protecao.")
 
 
-_TRIAGEM_COLS = ["status", "scenario_label", "dn_mm", "pressure_class_bar"]
-_DETAIL_COLS = [
-    "status", "scenario_label", "dn_mm", "pressure_class_bar",
+_RANKING_COLS = [
+    "tipo", "scenario_label", "dn_mm", "pressure_class_bar",
     "max_pressure_bar", "max_transient_bar", "velocity_m_s",
-    "pump_head_required_m", "objective_cost_brl", "score_global",
+    "pump_head_required_m", "objective_cost_brl",
 ]
-
-
-def _triagem_section(ranked_df: pd.DataFrame, titulo: str) -> None:
-    st.markdown(f"### {titulo}")
-    with_status = _with_status(ranked_df)
-    aprovados = with_status[with_status["is_feasible"]].reset_index(drop=True)
-    reprovados = with_status[~with_status["is_feasible"]].reset_index(drop=True)
-
-    col_ok, col_nok = st.columns(2)
-    with col_ok:
-        st.markdown(f"**Aprovados — {len(aprovados)} cenarios**")
-        if len(aprovados):
-            avail = [c for c in _TRIAGEM_COLS if c in aprovados.columns]
-            st.dataframe(aprovados[avail], use_container_width=True, hide_index=True)
-        else:
-            st.warning("Nenhum cenario aprovado com os materiais/filtros atuais.")
-    with col_nok:
-        st.markdown(f"**Reprovados — {len(reprovados)} cenarios**")
-        if len(reprovados):
-            avail = [c for c in _TRIAGEM_COLS if c in reprovados.columns]
-            st.dataframe(reprovados[avail], use_container_width=True, hide_index=True)
-        else:
-            st.success("Todos aprovados.")
-
-    if len(aprovados):
-        st.markdown("**Ranking de viaveis**")
-        avail = [c for c in _DETAIL_COLS if c in aprovados.columns]
-        st.dataframe(aprovados[avail].head(10), use_container_width=True, hide_index=True)
+_REPROVADO_COLS = ["motivo", "tipo", "scenario_label", "dn_mm", "pressure_class_bar"]
 
 
 def render_cenarios() -> None:
@@ -424,19 +397,41 @@ def render_cenarios() -> None:
     uniform_ranked = rank_scenarios_for_display(result["uniform_df"], priority)
     zoned_ranked = rank_scenarios_for_display(result["zoned_df"], priority)
 
-    _triagem_section(uniform_ranked, "Uniforme")
-    _triagem_section(zoned_ranked, "Por trechos")
+    # Consolida viaveis e reprovados de ambas as abordagens numa unica visao
+    viaveis = pd.concat([
+        uniform_ranked[uniform_ranked["is_feasible"]].assign(tipo="Uniforme"),
+        zoned_ranked[zoned_ranked["is_feasible"]].assign(tipo="Por trechos"),
+    ]).reset_index(drop=True)
+    if "score_global" in viaveis.columns:
+        viaveis = viaveis.sort_values("score_global", ascending=False).reset_index(drop=True)
+
+    reprovados_raw = pd.concat([
+        _with_status(uniform_ranked[~uniform_ranked["is_feasible"]]).assign(tipo="Uniforme"),
+        _with_status(zoned_ranked[~zoned_ranked["is_feasible"]]).assign(tipo="Por trechos"),
+    ]).reset_index(drop=True).rename(columns={"status": "motivo"})
+
+    if len(viaveis) == 0:
+        st.error(
+            f"Nenhum cenario viavel encontrado ({len(reprovados_raw)} reprovados). "
+            "Revise os materiais habilitados ou os limites de pressao/velocidade."
+        )
+        with st.expander(f"Reprovados — {len(reprovados_raw)} cenarios"):
+            avail = [c for c in _REPROVADO_COLS if c in reprovados_raw.columns]
+            st.dataframe(reprovados_raw[avail], use_container_width=True, hide_index=True)
+        return
+
+    st.success(f"{len(viaveis)} cenario(s) viavel(is) — {len(reprovados_raw)} reprovado(s) por criterio tecnico.")
+
+    avail = [c for c in _RANKING_COLS if c in viaveis.columns]
+    st.dataframe(viaveis[avail], use_container_width=True, hide_index=True)
+
+    if len(reprovados_raw):
+        with st.expander(f"Reprovados ({len(reprovados_raw)}) — motivo da reprovacao"):
+            avail2 = [c for c in _REPROVADO_COLS if c in reprovados_raw.columns]
+            st.dataframe(reprovados_raw[avail2], use_container_width=True, hide_index=True)
 
     with st.expander("Grafico comparativo", expanded=False):
         st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
-
-    with st.expander("Log tecnico", expanded=False):
-        uniform_df = result["uniform_df"]
-        zoned_df = result["zoned_df"]
-        st.write(f"Cenarios uniformes testados: {len(uniform_df)}")
-        st.write(f"Combinacoes por trechos testadas: {len(zoned_df)}")
-        st.write(f"Reprovados por criterio tecnico: {(~uniform_df['is_feasible']).sum()}")
-        st.write(f"Prioridade ativa: {priority}")
 
 
 def render_solucao_final() -> None:
@@ -463,14 +458,10 @@ def render_solucao_final() -> None:
     metric_cols[3].metric("Transiente min.", f"{result['kpis']['min_transient_bar']:.2f} bar")
     metric_cols[4].metric("Custo proxy", f"R$ {result['kpis']['objective_cost_brl']:,.0f}")
 
-    st.markdown("### Recomendacao consolidada")
     st.markdown(
-        f"""
-        - Solucao recomendada: `{best['zone_signature']}`
-        - Melhor uniforme de referencia: `{result['uniform_best']['scenario_label']}`
-        - Zonas finais consolidadas: `{result['kpis']['zone_count']}`
-        - Fonte de elevacao: `{result['elevation_source']}`
-        """
+        f"**Recomendado:** `{best['zone_signature']}`  \n"
+        f"Referencia uniforme: `{result['uniform_best']['scenario_label']}` — "
+        f"{result['kpis']['zone_count']} zona(s) — elevacao via `{result['elevation_source']}`"
     )
 
     export_tables = {
@@ -490,23 +481,21 @@ def render_solucao_final() -> None:
     with d3:
         st.download_button("Gerar resumo tecnico", build_solution_summary_text(result), file_name=f"resumo_{result['alignment_id']}.txt", mime="text/plain", use_container_width=True)
 
-    t1, t2 = st.columns(2)
-    with t1:
-        st.markdown("#### Tubos por trecho")
+    tab_tubos, tab_disp, tab_crit, tab_mat = st.tabs(["Tubulacao por trecho", "Dispositivos sugeridos", "Pontos criticos", "Lista de materiais"])
+    with tab_tubos:
         st.dataframe(result["zone_solution_df"], use_container_width=True, hide_index=True)
-        st.markdown("#### Lista preliminar de materiais")
-        st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
-    with t2:
-        st.markdown("#### Dispositivos sugeridos")
+    with tab_disp:
         st.dataframe(result["devices_df"], use_container_width=True, hide_index=True)
-        st.markdown("#### Pontos criticos")
+    with tab_crit:
         st.dataframe(result["critical_points_df"], use_container_width=True, hide_index=True)
+    with tab_mat:
+        st.dataframe(result["materials_df"], use_container_width=True, hide_index=True)
 
     with st.expander("Log tecnico", expanded=False):
         st.write(f"Cenario selecionado: {best['zone_signature']}")
-        st.write(f"Trade-offs aceitos: custo proxy {best['objective_cost_brl']:.0f} e bombeamento {best['pump_head_required_m']:.2f} m")
-        st.write("Limitacoes do estudo: pre-dimensionamento preliminar, transientes simplificados e custos-base de referencia.")
-        st.write("Pendencias para detalhamento executivo: topografia definitiva, modelagem transitoria refinada e cotacao real de fornecimento.")
+        st.write(f"Custo proxy: R$ {best['objective_cost_brl']:,.0f} — bombeamento: {best['pump_head_required_m']:.2f} m")
+        st.write("Limitacoes: pre-dimensionamento preliminar, transientes simplificados, custos-base de referencia.")
+        st.write("Pendencias executivas: topografia definitiva, modelagem transitoria refinada, cotacao real de fornecimento.")
 
 
 def render_catalogo() -> None:
