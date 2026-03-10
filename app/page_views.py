@@ -8,6 +8,7 @@ import pandas as pd
 import streamlit as st
 
 from src.export import dataframe_to_csv_bytes, to_excel_bytes
+from src.geo.elevation import ElevationAPIError
 from src.viz import fig_alternatives, fig_catalog, fig_pressure, fig_profile
 
 from ui_shared import (
@@ -122,11 +123,15 @@ def render_tracado() -> None:
         }
         params_json = json.dumps(preview_params, sort_keys=True)
         with st.spinner("Lendo eixo e preparando o preview do perfil..."):
-            st.session_state.trace_preview = prepare_trace_preview_cached(
-                st.session_state.files_payload,
-                st.session_state.selected_alignment,
-                params_json,
-            )
+            try:
+                st.session_state.trace_preview = prepare_trace_preview_cached(
+                    st.session_state.files_payload,
+                    st.session_state.selected_alignment,
+                    params_json,
+                )
+            except ElevationAPIError as exc:
+                st.error(f"Erro ao obter cotas de elevação: {exc}")
+                st.stop()
             st.session_state.stage_status["Tracado"] = True
 
     preview = st.session_state.trace_preview
@@ -226,10 +231,9 @@ def render_regime_permanente() -> None:
 
     defaults = st.session_state.steady_inputs
     with st.form("form_regime"):
-        localized_loss_factor = st.slider("Perdas localizadas simplificadas", min_value=0.0, max_value=0.5, value=float(defaults["localized_loss_factor"]), step=0.01)
+        localized_loss_factor = st.slider("Perdas localizadas simplificadas", min_value=0.0, max_value=0.5, value=float(defaults["localized_loss_factor"]), step=0.01, help="Fator multiplicador sobre as perdas distribuídas (ex: 0.10 = 10% adicional para conexões e acessórios).")
         velocity_min_m_s = st.number_input("Velocidade minima (m/s)", min_value=0.1, value=float(defaults["velocity_min_m_s"]), step=0.1)
         velocity_max_m_s = st.number_input("Velocidade maxima (m/s)", min_value=0.5, value=float(defaults["velocity_max_m_s"]), step=0.1)
-        friction_method = st.selectbox("Metodo de atrito", ["Darcy-Weisbach"], index=0)
         submitted = st.form_submit_button("Atualizar regime permanente", type="primary")
 
     if submitted:
@@ -238,7 +242,6 @@ def render_regime_permanente() -> None:
                 "localized_loss_factor": localized_loss_factor,
                 "velocity_min_m_s": velocity_min_m_s,
                 "velocity_max_m_s": velocity_max_m_s,
-                "friction_method": friction_method,
             }
         )
         invalidate_after("Regime permanente")
@@ -289,16 +292,14 @@ def render_transientes() -> None:
 
     defaults = st.session_state.transient_inputs
     with st.form("form_transientes"):
-        event_type = st.selectbox("Evento considerado", ["Envelope combinado", "Fechamento rapido", "Parada de bomba"], index=["Envelope combinado", "Fechamento rapido", "Parada de bomba"].index(defaults["event_type"]))
-        surge_closure_factor = st.slider("Severidade de sobrepressao", min_value=0.10, max_value=1.00, value=float(defaults["surge_closure_factor"]), step=0.05)
-        surge_trip_factor = st.slider("Severidade de subpressao", min_value=0.10, max_value=1.00, value=float(defaults["surge_trip_factor"]), step=0.05)
+        surge_closure_factor = st.slider("Fator de sobrepressao (fechamento)", min_value=0.10, max_value=1.00, value=float(defaults["surge_closure_factor"]), step=0.05, help="Fração da velocidade usada no envelope de sobrepressão de Joukowsky (fechamento rápido).")
+        surge_trip_factor = st.slider("Fator de subpressao (parada de bomba)", min_value=0.10, max_value=1.00, value=float(defaults["surge_trip_factor"]), step=0.05, help="Fração da velocidade usada no envelope de subpressão de Joukowsky (trip de bomba).")
         minimum_transient_pressure_bar = st.number_input("Limite minimo em transiente (bar)", value=float(defaults["minimum_transient_pressure_bar"]), step=0.1)
         submitted = st.form_submit_button("Atualizar transientes", type="primary")
 
     if submitted:
         st.session_state.transient_inputs.update(
             {
-                "event_type": event_type,
                 "surge_closure_factor": surge_closure_factor,
                 "surge_trip_factor": surge_trip_factor,
                 "minimum_transient_pressure_bar": minimum_transient_pressure_bar,
@@ -320,7 +321,6 @@ def render_transientes() -> None:
 
     with st.expander("Log tecnico", expanded=False):
         detail_df = result["detail_df"]
-        st.write(f"Evento considerado: {st.session_state.transient_inputs['event_type']}")
         st.write(f"Fator de sobrepressao: {st.session_state.transient_inputs['surge_closure_factor']:.2f}")
         st.write(f"Fator de subpressao: {st.session_state.transient_inputs['surge_trip_factor']:.2f}")
         st.write(f"Delta maximo de sobrepressao: {detail_df['positive_surge_bar'].max():.2f} bar")
@@ -383,11 +383,12 @@ def render_cenarios() -> None:
         max_zone_length_m = st.number_input("Comprimento maximo de zona (m)", min_value=300.0, value=float(defaults["max_zone_length_m"]), step=100.0)
         max_zones = st.slider("Numero maximo de zonas", min_value=1, max_value=6, value=int(defaults["max_zones"]), disabled=not mix_materials_by_zone)
         recommendation_priority = st.selectbox("Prioridade da comparacao", priority_options, index=priority_options.index(defaults["recommendation_priority"]))
-        pump_efficiency = st.slider("Rendimento estimado de bombeamento", min_value=0.40, max_value=0.90, value=float(defaults["pump_efficiency"]), step=0.01)
-        energy_cost_brl_per_kwh = st.number_input("Custo de energia (R$/kWh)", min_value=0.0, value=float(defaults["energy_cost_brl_per_kwh"]), step=0.05)
-        energy_horizon_years = st.number_input("Horizonte energetico (anos)", min_value=1.0, value=float(defaults["energy_horizon_years"]), step=1.0)
-        operating_hours_per_year = st.number_input("Horas equivalentes por ano", min_value=100.0, value=float(defaults["operating_hours_per_year"]), step=100.0)
-        transition_node_cost_brl = st.number_input("Custo por transicao entre zonas (R$)", min_value=0.0, value=float(defaults["transition_node_cost_brl"]), step=1000.0)
+        with st.expander("Parâmetros econômicos avançados"):
+            pump_efficiency = st.slider("Rendimento estimado de bombeamento", min_value=0.40, max_value=0.90, value=float(defaults["pump_efficiency"]), step=0.01)
+            energy_cost_brl_per_kwh = st.number_input("Custo de energia (R$/kWh)", min_value=0.0, value=float(defaults["energy_cost_brl_per_kwh"]), step=0.05)
+            energy_horizon_years = st.number_input("Horizonte energetico (anos)", min_value=1.0, value=float(defaults["energy_horizon_years"]), step=1.0)
+            operating_hours_per_year = st.number_input("Horas equivalentes por ano", min_value=100.0, value=float(defaults["operating_hours_per_year"]), step=100.0)
+            transition_node_cost_brl = st.number_input("Custo por transicao entre zonas (R$)", min_value=0.0, value=float(defaults["transition_node_cost_brl"]), step=1000.0)
         submitted = st.form_submit_button("Comparar cenarios", type="primary")
 
     if submitted:
@@ -415,6 +416,9 @@ def render_cenarios() -> None:
     if result is None:
         st.info("A comparacao depende dos resultados das etapas anteriores.")
         return
+
+    for warning in result.get("warnings", []):
+        st.warning(warning)
 
     priority = st.session_state.scenario_inputs["recommendation_priority"]
     uniform_ranked = rank_scenarios_for_display(result["uniform_df"], priority)
@@ -449,6 +453,8 @@ def render_solucao_final() -> None:
         return
 
     st.session_state.stage_status["Solucao final"] = True
+    for warning in result.get("warnings", []):
+        st.warning(warning)
     best = result["best_layout"]
     metric_cols = st.columns(5)
     metric_cols[0].metric("Extensao", f"{result['kpis']['total_length_m']:.0f} m")
