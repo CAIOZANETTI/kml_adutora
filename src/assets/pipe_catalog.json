@@ -1018,15 +1018,25 @@
       "series_label": "PN 12.5",
       "dn_mm": 400,
       "pressure_class_bar": 12.5,
-      "inner_diameter_m": 0.400,
+      "inner_diameter_m": 0.4,
       "roughness_mm": 0.007,
       "wave_speed_m_s": 320,
       "cost_brl_per_m": 780,
       "joint_type": "JEI",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_iso_16422_pvc_o"], "cost": ["cost_public_infra_proxy_pvc"]},
-      "source_labels": {"spec": "NBR ISO 16422 / linha BIAX", "cost": "Curated market reference + public infrastructure proxies"}
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
     },
     {
       "product_id": "pvc_o_wavin_dn400_pn16",
@@ -1043,8 +1053,18 @@
       "joint_type": "JEI",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_iso_16422_pvc_o"], "cost": ["cost_public_infra_proxy_pvc"]},
-      "source_labels": {"spec": "NBR ISO 16422 / linha BIAX", "cost": "Curated market reference + public infrastructure proxies"}
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
     },
     {
       "product_id": "pvc_o_wavin_dn400_pn20",
@@ -1061,8 +1081,18 @@
       "joint_type": "JEI",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_iso_16422_pvc_o"], "cost": ["cost_public_infra_proxy_pvc"]},
-      "source_labels": {"spec": "NBR ISO 16422 / linha BIAX", "cost": "Curated market reference + public infrastructure proxies"}
+      "references": {
+        "spec": [
+          "spec_nbr_iso_16422_pvc_o"
+        ],
+        "cost": [
+          "cost_public_infra_proxy_pvc"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR ISO 16422 / linha BIAX",
+        "cost": "Curated market reference + public infrastructure proxies"
+      }
     },
     {
       "product_id": "fofo_pam_dn350_c25",
@@ -1079,8 +1109,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn350_c30",
@@ -1090,15 +1130,25 @@
       "series_label": "C30",
       "dn_mm": 350,
       "pressure_class_bar": 30,
-      "inner_diameter_m": 0.360,
+      "inner_diameter_m": 0.36,
       "roughness_mm": 0.26,
       "wave_speed_m_s": 980,
       "cost_brl_per_m": 1520,
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn350_c40",
@@ -1115,8 +1165,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn400_c25",
@@ -1133,8 +1193,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn400_c30",
@@ -1151,8 +1221,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn400_c40",
@@ -1169,8 +1249,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn500_c25",
@@ -1187,8 +1277,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn500_c30",
@@ -1205,8 +1305,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn500_c40",
@@ -1223,8 +1333,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn600_c25",
@@ -1241,8 +1361,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn600_c30",
@@ -1259,8 +1389,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn600_c40",
@@ -1277,8 +1417,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn700_c25",
@@ -1295,8 +1445,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn700_c30",
@@ -1313,8 +1473,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn700_c40",
@@ -1331,8 +1501,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn800_c25",
@@ -1349,8 +1529,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn800_c30",
@@ -1367,8 +1557,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "fofo_pam_dn800_c40",
@@ -1385,8 +1585,18 @@
       "joint_type": "Bolsa e junta elastica",
       "wall_thickness_mm": null,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_iso_2531_ductile_iron"], "cost": ["cost_seinfra_market_proxy_fofo"]},
-      "source_labels": {"spec": "ISO 2531 / linha NATURAL", "cost": "SEINFRA + market reference"}
+      "references": {
+        "spec": [
+          "spec_iso_2531_ductile_iron"
+        ],
+        "cost": [
+          "cost_seinfra_market_proxy_fofo"
+        ]
+      },
+      "source_labels": {
+        "spec": "ISO 2531 / linha NATURAL",
+        "cost": "SEINFRA + market reference"
+      }
     },
     {
       "product_id": "aco_a53_dn350_pn16",
@@ -1403,8 +1613,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 6.35,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn350_pn25",
@@ -1421,8 +1641,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn350_pn40",
@@ -1432,15 +1662,25 @@
       "series_label": "Sch 80",
       "dn_mm": 350,
       "pressure_class_bar": 40,
-      "inner_diameter_m": 0.330,
+      "inner_diameter_m": 0.33,
       "roughness_mm": 0.045,
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 2500,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn400_pn16",
@@ -1457,8 +1697,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 6.35,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn400_pn25",
@@ -1475,8 +1725,18 @@
       "joint_type": "Ponta lista",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn400_pn40",
@@ -1491,10 +1751,20 @@
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 3050,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn500_pn16",
@@ -1511,8 +1781,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 7.92,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn500_pn25",
@@ -1529,8 +1809,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn500_pn40",
@@ -1545,10 +1835,20 @@
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 4100,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn600_pn16",
@@ -1565,8 +1865,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 7.92,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn600_pn25",
@@ -1583,8 +1893,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn600_pn40",
@@ -1599,10 +1919,20 @@
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 5200,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn700_pn16",
@@ -1619,8 +1949,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 7.92,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn700_pn25",
@@ -1637,8 +1977,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn700_pn40",
@@ -1653,10 +2003,20 @@
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 6700,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn800_pn16",
@@ -1673,8 +2033,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 7.92,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn800_pn25",
@@ -1691,8 +2061,18 @@
       "joint_type": "Ponta lisa",
       "wall_thickness_mm": 9.53,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
     },
     {
       "product_id": "aco_a53_dn800_pn40",
@@ -1707,10 +2087,1064 @@
       "wave_speed_m_s": 1100,
       "cost_brl_per_m": 8300,
       "joint_type": "Ponta lisa",
-      "wall_thickness_mm": 12.70,
+      "wall_thickness_mm": 12.7,
       "cost_reference_date": "2026-03-10",
-      "references": {"spec": ["spec_nbr_5590_astm_a53_steel"], "cost": ["cost_weight_fabrication_proxy_steel"]},
-      "source_labels": {"spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)", "cost": "Weight-based fabrication reference"}
+      "references": {
+        "spec": [
+          "spec_nbr_5590_astm_a53_steel"
+        ],
+        "cost": [
+          "cost_weight_fabrication_proxy_steel"
+        ]
+      },
+      "source_labels": {
+        "spec": "API 5L Gr B / NBR 5590 (DN>300 espiralado)",
+        "cost": "Weight-based fabrication reference"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn200_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 200,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.1765,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 95,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn200_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 200,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.1706,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 120,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn200_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 200,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.1636,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 145,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn250_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 250,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.2206,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 145,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn250_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 250,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.2132,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 185,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn250_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 250,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.2045,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 225,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn315_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 315,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.2779,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 225,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn315_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 315,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.2687,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 285,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn315_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 315,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.2577,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 345,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn400_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 400,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.3529,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 360,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn400_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 400,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.3412,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 460,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn400_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 400,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.3273,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 560,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn500_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 500,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.4412,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 570,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn500_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 500,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.4265,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 720,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn500_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 500,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.4091,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 880,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn630_sdr17",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 17 PN 10",
+      "dn_mm": 630,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.5559,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 300,
+      "cost_brl_per_m": 900,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn630_sdr13_6",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 13.6 PN 12.5",
+      "dn_mm": 630,
+      "pressure_class_bar": 12.5,
+      "inner_diameter_m": 0.5374,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 320,
+      "cost_brl_per_m": 1150,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "pead_pe100_dn630_sdr11",
+      "manufacturer": "Tigre / Amanco",
+      "product_line": "PEAD PE100",
+      "material": "PEAD",
+      "series_label": "SDR 11 PN 16",
+      "dn_mm": 630,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.5155,
+      "roughness_mm": 0.007,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 1400,
+      "joint_type": "Solda de topo / eletrofusao",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_11922_pead_pe100",
+          "spec_iso_4427_pe100"
+        ],
+        "cost": [
+          "cost_market_proxy_pead_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 11922 / ISO 4427 PE100",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn300_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 300,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 0.3,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 350,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn300_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 300,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.3,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 430,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn300_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 300,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.3,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 540,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn400_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 400,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 0.4,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 580,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn400_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 400,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.4,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 720,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn400_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 400,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.4,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 910,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn500_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 500,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 0.5,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 920,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn500_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 500,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.5,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 1140,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn500_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 500,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.5,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 1440,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn600_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 600,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 0.6,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 1320,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn600_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 600,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.6,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 1640,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn600_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 600,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.6,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 2070,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn800_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 800,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 0.8,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 2350,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn800_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 800,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 0.8,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 2920,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn800_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 800,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 0.8,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 3680,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn1000_pn6",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 6",
+      "dn_mm": 1000,
+      "pressure_class_bar": 6,
+      "inner_diameter_m": 1.0,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 3900,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn1000_pn10",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 10",
+      "dn_mm": 1000,
+      "pressure_class_bar": 10,
+      "inner_diameter_m": 1.0,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 4830,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
+    },
+    {
+      "product_id": "prfv_flowtite_dn1000_pn16",
+      "manufacturer": "Amiblu / Flowtite",
+      "product_line": "PRFV GRP SN5000",
+      "material": "PRFV",
+      "series_label": "PN 16",
+      "dn_mm": 1000,
+      "pressure_class_bar": 16,
+      "inner_diameter_m": 1.0,
+      "roughness_mm": 0.01,
+      "wave_speed_m_s": 350,
+      "cost_brl_per_m": 6080,
+      "joint_type": "Ponta e bolsa / junta elastica",
+      "wall_thickness_mm": null,
+      "cost_reference_date": "2026-03-10",
+      "references": {
+        "spec": [
+          "spec_nbr_12296_prfv",
+          "spec_iso_10639_grp"
+        ],
+        "cost": [
+          "cost_market_proxy_prfv_2026"
+        ]
+      },
+      "source_labels": {
+        "spec": "NBR 12296 / ISO 10639 SN5000",
+        "cost": "Referencia de mercado 2026"
+      }
     }
   ]
 }

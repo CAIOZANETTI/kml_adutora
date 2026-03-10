@@ -316,6 +316,42 @@ def render_transientes() -> None:
         st.write("Hipoteses: envelope simplificado de Joukowsky e indicacao preliminar de protecao.")
 
 
+_TRIAGEM_COLS = ["status", "scenario_label", "dn_mm", "pressure_class_bar"]
+_DETAIL_COLS = [
+    "status", "scenario_label", "dn_mm", "pressure_class_bar",
+    "max_pressure_bar", "max_transient_bar", "velocity_m_s",
+    "pump_head_required_m", "objective_cost_brl", "score_global",
+]
+
+
+def _triagem_section(ranked_df: pd.DataFrame, titulo: str) -> None:
+    st.markdown(f"### {titulo}")
+    with_status = _with_status(ranked_df)
+    aprovados = with_status[with_status["is_feasible"]].reset_index(drop=True)
+    reprovados = with_status[~with_status["is_feasible"]].reset_index(drop=True)
+
+    col_ok, col_nok = st.columns(2)
+    with col_ok:
+        st.markdown(f"**Aprovados — {len(aprovados)} cenarios**")
+        if len(aprovados):
+            avail = [c for c in _TRIAGEM_COLS if c in aprovados.columns]
+            st.dataframe(aprovados[avail], use_container_width=True, hide_index=True)
+        else:
+            st.warning("Nenhum cenario aprovado com os materiais/filtros atuais.")
+    with col_nok:
+        st.markdown(f"**Reprovados — {len(reprovados)} cenarios**")
+        if len(reprovados):
+            avail = [c for c in _TRIAGEM_COLS if c in reprovados.columns]
+            st.dataframe(reprovados[avail], use_container_width=True, hide_index=True)
+        else:
+            st.success("Todos aprovados.")
+
+    if len(aprovados):
+        st.markdown("**Ranking de viaveis**")
+        avail = [c for c in _DETAIL_COLS if c in aprovados.columns]
+        st.dataframe(aprovados[avail].head(10), use_container_width=True, hide_index=True)
+
+
 def render_cenarios() -> None:
     require_stage("Transientes e protecao")
     render_page_header(
@@ -372,42 +408,19 @@ def render_cenarios() -> None:
     uniform_ranked = rank_scenarios_for_display(result["uniform_df"], priority)
     zoned_ranked = rank_scenarios_for_display(result["zoned_df"], priority)
 
-    st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
+    _triagem_section(uniform_ranked, "Uniforme")
+    _triagem_section(zoned_ranked, "Por trechos")
 
-    display_cols = [
-        "status",
-        "scenario_label",
-        "dn_mm",
-        "pressure_class_bar",
-        "max_pressure_bar",
-        "max_transient_bar",
-        "velocity_m_s",
-        "pump_head_required_m",
-        "objective_cost_brl",
-        "score_global",
-    ]
-
-    st.markdown("#### Uniforme")
-    st.dataframe(
-        _with_status(uniform_ranked).head(10)[[c for c in display_cols if c in _with_status(uniform_ranked).columns]],
-        use_container_width=True,
-        hide_index=True,
-    )
-    st.markdown("#### Por trechos")
-    st.dataframe(
-        _with_status(zoned_ranked).head(10)[[c for c in display_cols if c in _with_status(zoned_ranked).columns]],
-        use_container_width=True,
-        hide_index=True,
-    )
+    with st.expander("Grafico comparativo", expanded=False):
+        st.plotly_chart(fig_alternatives(uniform_ranked, zoned_ranked), use_container_width=True)
 
     with st.expander("Log tecnico", expanded=False):
         uniform_df = result["uniform_df"]
         zoned_df = result["zoned_df"]
-        st.write(f"Numero total de cenarios uniformes testados: {len(uniform_df)}")
-        st.write(f"Numero de combinacoes por trechos testadas: {len(zoned_df)}")
-        st.write(f"Cenarios descartados por inviabilidade: {(~uniform_df['is_feasible']).sum()}")
-        st.write(f"Prioridade ativa na comparacao: {priority}")
-        st.write("Justificativa do lider: ordenacao por score global calculado a partir de score tecnico e economico de exibicao.")
+        st.write(f"Cenarios uniformes testados: {len(uniform_df)}")
+        st.write(f"Combinacoes por trechos testadas: {len(zoned_df)}")
+        st.write(f"Reprovados por criterio tecnico: {(~uniform_df['is_feasible']).sum()}")
+        st.write(f"Prioridade ativa: {priority}")
 
 
 def render_solucao_final() -> None:
